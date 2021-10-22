@@ -13,7 +13,7 @@
 .week.busy{background-color: lightgray; border: red;}
 
 .gallery{margin: 1rem -2rem;overflow-x:scroll;white-space: nowrap;background: white;box-shadow: 0 2px 4px rgb(0 0 0 / 20%);}
-.gallery>img{max-height: 400px;/* min-height: 400px; */margin: 0 1px;vertical-align: middle;}
+.gallery>img{max-height: 320px;/* min-height: 400px; */margin: 0 1px;vertical-align: middle;}
 
 
 attic {
@@ -24,9 +24,10 @@ attic {
 .specs>span {
   margin-right: 8px;
   padding: 2px 6px;
-  background: lavender;
+  background: lavender 2px no-repeat;
+  padding-left: 21px;
 }
-
+/*
 .specs>span::before {
   font-size: 1.5rem;
 }
@@ -48,13 +49,15 @@ attic {
 	content: "❊ ";
 	vertical-align: sub;
 }
+*/
 .specs>.hp::after{
 	content:"hp"
 }
 
 .specs {
-  color: gray;
-  /* font-size: .8em; */
+  /* color: gray; */
+  font-size: .9em;
+  margin-top: .5em;
 }
 
 .price::after {content: " €";color: darkgrey;}
@@ -68,4 +71,20 @@ img.flag {
 
 .offer.focused>.brief>.subtitle {
   display: block;
+}
+
+.specs>.cabins {
+  background-image: url('/chrome/icons/16px/doublebed.png');
+}
+
+.specs>.hp {
+  background-image: url(/chrome/icons/16px/engine.png);
+}
+
+.specs>.wc {
+  background-image: url(/chrome/icons/16px/wc.png);
+}
+
+.specs>.sleeps {
+  background-image: url(/chrome/icons/16px/face.png);
 }
