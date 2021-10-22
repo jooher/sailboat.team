@@ -63,14 +63,19 @@ attic {
 .price::after {content: " €";color: darkgrey;}
 
 img.flag {
-  /* vertical-align: top; */
   position: absolute;
   left: -24px;
   top: 6px;
 }
 
+
+
 .offer.focused>.brief>.subtitle {
   display: block;
+}
+
+.specs>.sleeps {
+  background-image: url(16px/face.png);
 }
 
 .specs>.cabins {
@@ -83,8 +88,4 @@ img.flag {
 
 .specs>.wc {
   background-image: url(16px/wc.png);
-}
-
-.specs>.sleeps {
-  background-image: url(16px/face.png);
 }
