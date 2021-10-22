@@ -3,8 +3,6 @@
 const gm = google.maps,
 	gd = gm.Data,
 	
-	center = new gm.LatLng(44.4,33.3),
-		
 	Marker = point => {
 		const m = new gm.Marker(point);
 		m.setPosition(new gm.LatLng(...point.pos));
@@ -13,9 +11,11 @@ const gm = google.maps,
 	};
 
 
-export default (container,points) => {
+export default options => (container,points) => {
 	
-	const map = new gm.Map(container, { zoom: 8, center, disableDefaultUI: true });
+	const map = new gm.Map(container, options );
+	
+	map.addListener('mouseup', e=> console.log(map.center.lat()+" : "+map.center.lng()+" @ "+map.zoom));
 	
 	points.map(Marker).forEach(m => {
 		m.setMap(map);
@@ -27,7 +27,8 @@ export default (container,points) => {
 		
 		map.addListener('click', e=>{
 			map.panTo(e.latLng);
-		})
+		});
+		
 	});
 			
 }

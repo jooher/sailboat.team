@@ -1,35 +1,48 @@
 import "./0.5.js";//"https://dap.js.org/0.5.js";
 import boataround from "./grab/boataround.js";
+import scrollfocus from "./jsm/scrollfocus.js";	
 
 /*
 import Await from "/./stuff/await.js";
 import Persist from "/./stuff/persist.js";
-import scrollfocus from "/./stuff/scrollfocus.js";	
 import Starbar from "/./stuff/bricks/starbar.js";
 */
 
-import geomap from "./jsm/geomap.js";
+import gmap from "./jsm/geomap.js";
 
-const dap = window["https://dap.js.org/"],
+const geomap = gmap({ zoom: 4, center: {lat:50,lng:24}, disableDefaultUI: true, gestureHandling:'greedy' }),
+	dap = window["https://dap.js.org/"],
 	grab	= src	=> [...(src.parentNode.removeChild(src)).children].reduce((a,n)=>{if(n.id)a[n.id]=src.removeChild(n); return a},{}),
 	dict	= grab(document.getElementById("data"));
 
-const tsv	= txt => txt.split(/\n/g).filter(s=>s.length).map(str=>str.split(/\t/g)), // Tab-separated values
+const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // Tab-separated values
 
 	options = txt => tsv(txt).map( ([id,value,title])=>({value,title}) ),
 	
-	wrap = (value,cls,tag) => {
+	wrap = (tag,cls,value) => {
 		const el = document.createElement(tag);
-		el.classList.add(cls);
-		el.textContent = value;
+		if(cls)el.classList.add(cls);
+		if(value!==null)el.textContent = value;
 		return el;
 	},
 	
-	wraps = tag => obj => {
-		const els = [];		
-		for(const c in obj)
-			els.push(wrap(obj[c],c,tag));
+	wraps = tag => (obj,tags) => {
+		if(Array.isArray(obj))
+			return obj.map( (value,i) => wrap(tag,tags[i],value) ).reverse();
+		const els = [];
+		for(const c in obj)els.push(wrap(tag,c,obj[c]));
 		return els;
+	},
+	
+	divs = wraps("div"),
+	spans = wraps("span"),
+	
+	input = attrs => Object.assign(document.createElement("input"),attrs),
+	
+	label	= attrs => {
+		const label = wrap("label",attrs.name);
+		label.appendChild( input(attrs) );
+		return label;
 	},
 	
 	near = (weeks,week,margin) => {
@@ -45,7 +58,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s.length).map(str=>str.split(/\t/g
 		return bits;
 	},
 	
-	mappings = {
+	mapping = {
 		
 		bays	: txt => tsv(txt).map(
 			([pos,qty,title])=>({
@@ -60,14 +73,11 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s.length).map(str=>str.split(/\t/g
 			)
 	};
 	
-	
-	
-
 //export default
 
-'APP'.d("$shipclass= $week=`3 $bay= $ship= $book="
+'APP'.d("$shipclass= $week=`3 $bay= $book="
 
-	,'PAGE.area'.d("? $ship:!"
+	,'PAGE.area'.d("focus $book:!"
 	
 		,'ETAGE'.d(""
 		
@@ -87,10 +97,12 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s.length).map(str=>str.split(/\t/g
 		
 	)
 	
-	,'PAGE.book'.d("? $book; ! `book"
-	
-		
+	,'PAGE.book'.d("focus $book"
+		,'ATTIC.brief'.d("! ($book.make@title $book.name@subtitle)divs")
+		,"FORM action=/submit _action=https://www.boataround.com/final-details method=post target=boataround"
+			.d("! ($book._id@boat_id)hiddens (`name @email`email @tel`phone-number @week`week @submit)inputs")
 	)
+	
 )
 
 .DICT({
@@ -106,7 +118,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s.length).map(str=>str.split(/\t/g
 	Ships	
 	:'ships'.d("*@ .ships"//
 		,'offer'.d("$?="
-			,'brief'.d("? .busy .busy=( .weeks $week )near; ! Flag (.make@title .name@subtitle .note .price ):divs "
+			,'brief'.d("? .busy .busy=( .weeks $week )near; ! Flag (.make@title .name@subtitle .note .price )divs "
 				,'specs'.d("! .specs:spans ")
 				,'weeks'.d("*@ .busy" 
 					,'week'.d("!? .busy")
@@ -117,13 +129,12 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s.length).map(str=>str.split(/\t/g
 					,'IMG'.d("!! .src")
 				)
 				
-				
 				,'more'.d(""
 					,'checklists'.d()
 					,'feedback'.d()
 				)
 				
-				,'BUTTON.order `See charter details'.d()
+				,'BUTTON.order `See charter details'.ui("$book=$")
 				
 			)
 		).a("!? $?@focused")
@@ -147,21 +158,25 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s.length).map(str=>str.split(/\t/g
 			dap.Env.Print(node,el);
 		},
 		
+		focus	:(value,alias,node)=>{
+				if(value)scrollfocus(node,alias);
+			},
+		
 		geomap : (value,alias,node) => setTimeout( ()=> geomap(node,value), 10 ) // : ()=>{}
 	},
 	
 	flatten:{
+		divs, spans,
+		inputs: (values,tags) => values.map( (name,i) => label({ name, type:tags[i]||'text' }) ).reverse(),
+		hiddens: (values,tags) => values.map( (value,i) => input({ name:tags[i], value, type:'hidden'}) ),
 		near	: values=>near(values.pop(),values.pop(),2)
 	},
 	
-	convert:{ tsv, options, 
-		divs: wraps("div"),
-		spans: wraps("span") 
-	}
+	convert:{ tsv, options, divs, spans	}
 	
 })
 
-.FUNC({convert:mappings})
+.FUNC({convert:mapping})
 
 .FUNC({convert:boataround.convert})
 
