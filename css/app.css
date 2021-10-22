@@ -74,17 +74,17 @@ img.flag {
 }
 
 .specs>.cabins {
-  background-image: url('/chrome/icons/16px/doublebed.png');
+  background-image: url(/16px/doublebed.png);
 }
 
 .specs>.hp {
-  background-image: url(/chrome/icons/16px/engine.png);
+  background-image: url(16px/engine.png);
 }
 
 .specs>.wc {
-  background-image: url(/chrome/icons/16px/wc.png);
+  background-image: url(16px/wc.png);
 }
 
 .specs>.sleeps {
-  background-image: url(/chrome/icons/16px/face.png);
+  background-image: url(16px/face.png);
 }
