@@ -1,0 +1,21 @@
+//api.boataround.com/v1/getDestinations/en_EN?destinationSearches=italy
+{
+	"status": "Success",
+	"data": [
+		{
+			"total": 1833,
+			"icon": "flag-icon flag-icon-it",
+			"name": "Italy",
+			"meta": "",
+			"type": "country",
+			"coordinates": [
+				12.743161,
+				42.271543
+			],
+			"id": "italy",
+			"label": "country",
+			"expression": "Italy"
+		}
+	],
+	"statusCode": 200
+}

@@ -1,0 +1,24 @@
+{
+https://api.boataround.com/v1/getDestinations/en_EN?destinationSearches=russia
+
+	"status": "Success",
+	"data": [
+		{
+			"total": 286,
+			"icon": "flag-icon flag-icon-ru",
+			"name": "Russia",
+			"meta": "",
+			"type": "country",
+			"coordinates": [
+				105.318756,
+				61.52401
+			],
+			"id": "russia",
+			"label": "country",
+			"expression": "Russia"
+		}
+	],
+	"statusCode": 200
+}
+
+

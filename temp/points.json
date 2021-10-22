@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "Bavaria 50",
+        "label": "Hrvaska",
+        "price": "2480"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.04, 44.04]
+      }
+    },
+    
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Bavaria 50",
+        "label": "Flori",
+	  "price": "1500"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [33.44, 44.44]
+      }
+    }
+
+  ]
+}

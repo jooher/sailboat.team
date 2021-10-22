@@ -1,0 +1,82 @@
+[
+	{
+		"name": "Abruzzo",
+		"coords": [
+			14.058507,
+			42.423569
+		],
+		"count": 6
+	},
+	{
+		"name": "Elba",
+		"coords": [
+			10.290243,
+			42.780203
+		],
+		"count": 42
+	},
+	{
+		"name": "Friuli-Venezia Giulia",
+		"coords": [
+			13.103365,
+			46.225918
+		],
+		"count": 3
+	},
+	{
+		"name": "Liguria",
+		"coords": [
+			9.047434,
+			44.552136
+		],
+		"count": 80
+	},
+	{
+		"name": "Naples",
+		"coords": [
+			14.332644,
+			40.901975
+		],
+		"count": 54
+	},
+	{
+		"name": "Procida",
+		"coords": [
+			14.0151,
+			40.757841
+		],
+		"count": 67
+	},
+	{
+		"name": "Riviera delle Palme",
+		"coords": [
+			13.874585,
+			42.960968
+		],
+		"count": 3
+	},
+	{
+		"name": "Sardinia",
+		"coords": [
+			9.023879,
+			40.196443
+		],
+		"count": 460
+	},
+	{
+		"name": "Sicily",
+		"coords": [
+			13.707739,
+			37.626102
+		],
+		"count": 429
+	},
+	{
+		"name": "Veneto",
+		"coords": [
+			11.690976,
+			45.762333
+		],
+		"count": 60
+	}
+]

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>test</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
+	
+	<style>
+		[data-dap=false]{display:none !important}
+		[ui=click]{cursor:pointer;}
+		
+		section.map{height:400px;}
+	</style>
+	
+	<link rel="stylesheet" href="css/material.css"/> <!-- https://dap.js.org/stuff/ -->
+	<link rel="stylesheet" href="css/app.css"/>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBALH6vLZir1LYeGlRryY66aKjo3Kji90o&callback=initMap&v=weekly"></script>
+	
+	
+</head>
+
+<body>
+
+<script type="module" src="weeker.js"></script>
+	
+<section id="data">
+	
+<article id = "shipclasses-about">
+
+	<a href="#!shipclass=10">
+		<h2>Парусная лодка без кают</h2>
+		<p></p>
+	</a>
+	<a href="#!shipclass=11">
+		<h2>Парусная лодка с каютой</h2>
+		<p></p>
+	</a>
+	<a href="#!shipclass=12">
+		<h2>Парусная яхта 4-8 гостей</h2>
+		<p></p>
+	</a>
+	<a href="#!shipclass=14">
+		<h2>Парусная яхта 8-12 гостей</h2>
+		<p></p>
+	</a>
+	<a href="#!shipclass=16">
+		<h2>Парусная яхта 12 и более гостей</h2>
+		<p></p>
+	</a>
+	<a href="#!shipclass=21">
+		<h2>Моторный катер</h2>
+		<p></p>
+	</a>
+	<a href="#!shipclass=22">
+		<h2>Моторная яхта</h2>
+		<p></p>
+	</a>
+	<a href="#!shipclass=44">
+		<h2>Супер-яхта до 12 гостей</h2>
+		<p></p>
+	</a>
+	<a href="#!shipclass=46">
+		<h2>Супер-яхта 12 и более гостей</h2>
+		<p></p>
+	</a>
+</article>
+		
+<div id="shipclasses">
+00		Все категории
+11	category=sailing-yacht+cabins=1	Парусная лодка с каютой
+12	category=sailing-yacht+cabins=2-3	Парусная яхта 4-8 гостей
+14	category=sailing-yacht+cabins=3-5	Парусная яхта 8-12 гостей
+16	category=sailing-yacht+cabins=5-	Парусная яхта 12 и более гостей
+20	category=catamaran	Парусный катамаран
+30	category=motor-boat	Моторный катер
+40	category=motor-yacht	Моторная яхта
+50	category=power-catamaran	Моторный катамаран
+60	category=gulet	Гулет
+</div>
+<!--
+10	Парусная лодка без кают
+43	Супер-яхта 12 и более гостей
+42	Супер-яхта до 12 гостей
+-->
+
+categories	= {
+	"sailing-yacht"	:10,
+	"catamaran"		:20,
+	"houseboat"		:20,
+	"motor-boat"	:30,
+	"motor-yacht"	:40,
+	"gulet"		:50,
+	"power-catamaran"	:60
+},
+
+	
+	</section>
+	
+</body>
+</html>

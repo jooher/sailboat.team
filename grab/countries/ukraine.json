@@ -1,0 +1,18 @@
+[
+	{
+		"name": "Kiev Region",
+		"coords": [
+			30.5234,
+			50.4501
+		],
+		"count": 44
+	},
+	{
+		"name": "Odessa Region",
+		"coords": [
+			30.7326,
+			46.484583
+		],
+		"count": 19
+	}
+]

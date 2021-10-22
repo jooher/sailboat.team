@@ -1,0 +1,476 @@
+//api.boataround.com/v1/locations/getAll?locationType=country&lang=en_EN
+{
+	"status": "Success",
+	"data": [
+		{
+			"_id": "5d7631ad722e7a179d058e54",
+			"search_slug": "albania",
+			"name": "Albania",
+			"slug": "albania",
+			"image": "locations/5d7631ad722e7a179d058e54/5e53d326ac05187d071f57d4.jpg"
+		},
+		{
+			"_id": "594baecf117f74d066e67f21",
+			"search_slug": "australia",
+			"name": "Australia",
+			"slug": "australia",
+			"image": "locations/594baecf117f74d066e67f21/5e53d30eac05187d071f5694.jpg"
+		},
+		{
+			"_id": "598453caa7037952fa402521",
+			"search_slug": "austria",
+			"name": "Austria",
+			"slug": "austria",
+			"image": "locations/598453caa7037952fa402521/5e53d2eeac05187d071f54de.jpg"
+		},
+		{
+			"_id": "5fc656360e74cb4c1d4b7d14",
+			"search_slug": "belarus",
+			"name": "Belarus",
+			"slug": "belarus",
+			"image": "locations/5fc656360e74cb4c1d4b7d14/6001568bb33cba283e7f9bb0.jpg"
+		},
+		{
+			"_id": "5a313cdb2bb5d820c968dca9",
+			"search_slug": "belgium",
+			"name": "Belgium",
+			"slug": "belgium",
+			"image": "locations/5a313cdb2bb5d820c968dca9/5e53d311ac05187d071f56be.jpg"
+		},
+		{
+			"_id": "5b48fb9027d87f260229e504",
+			"search_slug": "belize",
+			"name": "Belize",
+			"slug": "belize",
+			"image": "locations/5b48fb9027d87f260229e504/5e53d317ac05187d071f5710.jpg"
+		},
+		{
+			"_id": "5a62164a63654318c514d7b1",
+			"search_slug": "brazil",
+			"name": "Brazil",
+			"slug": "brazil",
+			"image": "locations/5a62164a63654318c514d7b1/5e53d313ac05187d071f56d6.jpg"
+		},
+		{
+			"_id": "5b4c265927d87f1c6e48bc88",
+			"search_slug": "bulgaria",
+			"name": "Bulgaria",
+			"slug": "bulgaria",
+			"image": "locations/5b4c265927d87f1c6e48bc88/5ee50451402389437353b3c1.jpeg"
+		},
+		{
+			"_id": "5b7d5e6790d76f300c0b000c",
+			"search_slug": "canada",
+			"name": "Canada",
+			"slug": "canada",
+			"image": "locations/5b7d5e6790d76f300c0b000c/5e53d318ac05187d071f5716.jpg"
+		},
+		{
+			"_id": "594baecf117f74d066e67f28",
+			"search_slug": "cape-verde",
+			"name": "Cape Verde",
+			"slug": "cape-verde",
+			"image": "locations/594baecf117f74d066e67f28/5e53d2eeac05187d071f54e8.jpg"
+		},
+		{
+			"_id": "594baece117f74d066e67f19",
+			"search_slug": "caribbean",
+			"name": "Caribbean",
+			"slug": "caribbean",
+			"image": "locations/594baece117f74d066e67f19/6026a91e8c36bf482b7e90c3.jpg"
+		},
+		{
+			"_id": "5f5b267859294b660825329d",
+			"search_slug": "chile",
+			"name": "Chile",
+			"slug": "chile",
+			"image": "locations/5f5b267859294b660825329d/5f5b267859294b660825329e.jpeg"
+		},
+		{
+			"_id": "594baed0117f74d066e67f2f",
+			"search_slug": "colombia",
+			"name": "Colombia",
+			"slug": "colombia",
+			"image": "locations/594baed0117f74d066e67f2f/5ee507dcdf8e1061345ac8b9.jpeg"
+		},
+		{
+			"_id": "594baecd117f74d066e67f12",
+			"search_slug": "croatia",
+			"name": "Croatia",
+			"slug": "croatia",
+			"image": "locations/594baecd117f74d066e67f12/6024e4a3066cc67ee775978e.jpg"
+		},
+		{
+			"_id": "594baece117f74d066e67f18",
+			"search_slug": "cuba",
+			"name": "Cuba",
+			"slug": "cuba",
+			"image": "locations/594baece117f74d066e67f18/5e53d306ac05187d071f5630.jpg"
+		},
+		{
+			"_id": "5e1c83481fd844253e31efdb",
+			"search_slug": "cyprus-1",
+			"name": "Cyprus",
+			"slug": "cyprus",
+			"image": "locations/5e1c83481fd844253e31efdb/5e74d490b409887aa53d865a.jpeg"
+		},
+		{
+			"_id": "59ae69b0a70379200a1131c3",
+			"search_slug": "czech-republic",
+			"name": "Czech Republic",
+			"slug": "czech-republic",
+			"image": "locations/59ae69b0a70379200a1131c3/5e53d30cac05187d071f567a.jpg"
+		},
+		{
+			"_id": "5e82fa29f898367c4327b78e",
+			"search_slug": "denmark",
+			"name": "Denmark",
+			"slug": "denmark",
+			"image": "locations/5e82fa29f898367c4327b78e/5ec513b86239fd2d14766593.jpeg"
+		},
+		{
+			"_id": "5d762343722e7a633066c088",
+			"search_slug": "ecuador",
+			"name": "Ecuador",
+			"slug": "ecuador",
+			"image": "locations/5d762343722e7a633066c088/5e53d327ac05187d071f57de.jpg"
+		},
+		{
+			"_id": "59faf9222bb5d83032040ad1",
+			"search_slug": "egypt",
+			"name": "Egypt",
+			"slug": "egypt",
+			"image": "locations/59faf9222bb5d83032040ad1/5ee505454023892978628725.jpeg"
+		},
+		{
+			"_id": "594baed0117f74d066e67f2e",
+			"search_slug": "estonia",
+			"name": "Estonia",
+			"slug": "estonia",
+			"image": "locations/594baed0117f74d066e67f2e/5e53d30bac05187d071f566e.jpg"
+		},
+		{
+			"_id": "5e96b542a24b3312ea7cd527",
+			"search_slug": "finland",
+			"name": "Finland",
+			"slug": "finland",
+			"image": "locations/5e96b542a24b3312ea7cd527/5e96b542a24b3312ea7cd528.jpeg"
+		},
+		{
+			"_id": "594baece117f74d066e67f1a",
+			"search_slug": "france",
+			"name": "France",
+			"slug": "france",
+			"image": "locations/594baece117f74d066e67f1a/6024e29872444f08676d0738.jpg"
+		},
+		{
+			"_id": "5baa55d00abd7b70c97ff221",
+			"search_slug": "french-polynesia",
+			"name": "French Polynesia",
+			"slug": "french-polynesia",
+			"image": "locations/5baa55d00abd7b70c97ff221/5e53d31bac05187d071f5744.jpg"
+		},
+		{
+			"_id": "594baed0117f74d066e67f32",
+			"search_slug": "germany",
+			"name": "Germany",
+			"slug": "germany",
+			"image": "locations/594baed0117f74d066e67f32/602a28cb371728064b2aca4a.jpg"
+		},
+		{
+			"_id": "594baecd117f74d066e67f13",
+			"search_slug": "greece",
+			"name": "Greece",
+			"slug": "greece",
+			"image": "locations/594baecd117f74d066e67f13/5e53d2ceac05187d071f532c.jpg"
+		},
+		{
+			"_id": "5afd58c827d87f5ade1d8e9c",
+			"search_slug": "hungary",
+			"name": "Hungary",
+			"slug": "hungary",
+			"image": "locations/5afd58c827d87f5ade1d8e9c/602e67ade90fc438917dfea4.jpg"
+		},
+		{
+			"_id": "5baa5f5c6422f50db2730763",
+			"search_slug": "iceland",
+			"name": "Iceland",
+			"slug": "iceland",
+			"image": "locations/5baa5f5c6422f50db2730763/5ee506474023897a3035e4f0.jpeg"
+		},
+		{
+			"_id": "60bdc890391e4115ce2f547a",
+			"search_slug": "india",
+			"name": "India",
+			"slug": "india",
+			"image": "locations/60bdc890391e4115ce2f547a/60bdd9b8f5a0c44fc34e78d0.jpg"
+		},
+		{
+			"_id": "5c9ddad8852c5659860d97f9",
+			"search_slug": "indonesia",
+			"name": "Indonesia",
+			"slug": "indonesia",
+			"image": "locations/5c9ddad8852c5659860d97f9/5ee50859df8e106b2b26ba24.jpeg"
+		},
+		{
+			"_id": "5aafac266365435f554b0b1d",
+			"search_slug": "ireland",
+			"name": "Ireland",
+			"slug": "ireland",
+			"image": "locations/5aafac266365435f554b0b1d/606ed6331431695f1846b458.jpg"
+		},
+		{
+			"_id": "594baecd117f74d066e67f16",
+			"search_slug": "italy",
+			"name": "Italy",
+			"slug": "italy",
+			"image": "locations/594baecd117f74d066e67f16/606ed8d3817859568b02fe73.jpg"
+		},
+		{
+			"_id": "5cf26e61aa1b1401e5361ad8",
+			"search_slug": "madagascar",
+			"name": "Madagascar",
+			"slug": "madagascar",
+			"image": "locations/5cf26e61aa1b1401e5361ad8/5e53d31fac05187d071f577c.jpg"
+		},
+		{
+			"_id": "594baecf117f74d066e67f25",
+			"search_slug": "malaysia",
+			"name": "Malaysia",
+			"slug": "malaysia",
+			"image": "locations/594baecf117f74d066e67f25/5ee50940df8e105a050f6f7f.jpeg"
+		},
+		{
+			"_id": "59affce2a703795e067dac97",
+			"search_slug": "maldives",
+			"name": "Maldives",
+			"slug": "maldives",
+			"image": "locations/59affce2a703795e067dac97/5ee67491d093ca18e13bf622.jpeg"
+		},
+		{
+			"_id": "594baecd117f74d066e67f15",
+			"search_slug": "malta",
+			"name": "Malta",
+			"slug": "malta",
+			"image": "locations/594baecd117f74d066e67f15/5e53d303ac05187d071f5604.jpg"
+		},
+		{
+			"_id": "5ace3f906365431e5259a70a",
+			"search_slug": "mauritius",
+			"name": "Mauritius",
+			"slug": "mauritius",
+			"image": "locations/5ace3f906365431e5259a70a/5e53d2f2ac05187d071f5520.jpg"
+		},
+		{
+			"_id": "5ace41506365430ff069cb6e",
+			"search_slug": "mexico",
+			"name": "Mexico",
+			"slug": "mexico",
+			"image": "locations/5ace41506365430ff069cb6e/5e53d2f3ac05187d071f552a.jpg"
+		},
+		{
+			"_id": "594baed0117f74d066e67f30",
+			"search_slug": "montenegro",
+			"name": "Montenegro",
+			"slug": "montenegro",
+			"image": "locations/594baed0117f74d066e67f30/5e53d30cac05187d071f5682.jpg"
+		},
+		{
+			"_id": "5e5d6c1eac5f5848061b4af8",
+			"search_slug": "mozambique",
+			"name": "Mozambique",
+			"slug": "mozambique",
+			"image": "locations/5e5d6c1eac5f5848061b4af8/5ee39e08bd4c413ef060ae77.jpeg"
+		},
+		{
+			"_id": "599d3548a703791b202e6852",
+			"search_slug": "netherlands",
+			"name": "Netherlands",
+			"slug": "netherlands",
+			"image": "locations/599d3548a703791b202e6852/5e53d30bac05187d071f5674.jpg"
+		},
+		{
+			"_id": "5ad2dafe27d87f3c5948b5d2",
+			"search_slug": "new-caledonia",
+			"name": "New Caledonia",
+			"slug": "new-caledonia",
+			"image": "locations/5ad2dafe27d87f3c5948b5d2/5ee3a18cf15b250d6e337a3e.jpeg"
+		},
+		{
+			"_id": "60757aebf1807f148f457770",
+			"search_slug": "north-macedonia",
+			"name": "North Macedonia",
+			"slug": "north-macedonia",
+			"image": "locations/60757aebf1807f148f457770/607d780c01a7e8231915faf8.jpg"
+		},
+		{
+			"_id": "59945711a7037911d6459eef",
+			"search_slug": "norway",
+			"name": "Norway",
+			"slug": "norway",
+			"image": "locations/59945711a7037911d6459eef/5e53d30fac05187d071f56a8.jpg"
+		},
+		{
+			"_id": "5a0179c0b89bf312f360e2f8",
+			"search_slug": "panama",
+			"name": "Panama",
+			"slug": "panama",
+			"image": "locations/5a0179c0b89bf312f360e2f8/5ee6751ad093ca18e13bf626.jpeg"
+		},
+		{
+			"_id": "5ae6aa3027d87f5c371733c8",
+			"search_slug": "philippines",
+			"name": "Philippines",
+			"slug": "philippines",
+			"image": "locations/5ae6aa3027d87f5c371733c8/60015cc2bc040f3ee251984f.jpg"
+		},
+		{
+			"_id": "594baed0117f74d066e67f31",
+			"search_slug": "poland",
+			"name": "Poland",
+			"slug": "poland",
+			"image": "locations/594baed0117f74d066e67f31/5e53d311ac05187d071f56b8.jpg"
+		},
+		{
+			"_id": "594baed0117f74d066e67f29",
+			"search_slug": "portugal",
+			"name": "Portugal",
+			"slug": "portugal",
+			"image": "locations/594baed0117f74d066e67f29/5e53d2efac05187d071f54f6.jpg"
+		},
+		{
+			"_id": "5eb1062b20af67445a62dc36",
+			"search_slug": "romania",
+			"name": "Romania",
+			"slug": "romania",
+			"image": "locations/5eb1062b20af67445a62dc36/5ed609f401c111368151b45e.jpeg"
+		},
+		{
+			"_id": "59955a02a703793e69751533",
+			"search_slug": "russia",
+			"name": "Russia",
+			"slug": "russia",
+			"image": "locations/59955a02a703793e69751533/5ee675b3d093ca0d147a02da.jpeg"
+		},
+		{
+			"_id": "594baecf117f74d066e67f20",
+			"search_slug": "seychelles",
+			"name": "Seychelles",
+			"slug": "seychelles",
+			"image": "locations/594baecf117f74d066e67f20/6026a9d39cfec22b74637122.jpg"
+		},
+		{
+			"_id": "5ddce25116bf7c4ac4188934",
+			"search_slug": "singapore",
+			"name": "Singapore",
+			"slug": "singapore",
+			"image": "locations/5ddce25116bf7c4ac4188934/5e53d32cac05187d071f5826.jpg"
+		},
+		{
+			"_id": "5afa686f27d87f3556403904",
+			"search_slug": "slovakia",
+			"name": "Slovakia",
+			"slug": "slovakia",
+			"image": "locations/5afa686f27d87f3556403904/5ee6764ed093ca0d147a02e0.jpeg"
+		},
+		{
+			"_id": "594baecf117f74d066e67f27",
+			"search_slug": "slovenia",
+			"name": "Slovenia",
+			"slug": "slovenia",
+			"image": "locations/594baecf117f74d066e67f27/5e53d2f5ac05187d071f553e.jpg"
+		},
+		{
+			"_id": "594baece117f74d066e67f17",
+			"search_slug": "spain",
+			"name": "Spain",
+			"slug": "spain",
+			"image": "locations/594baece117f74d066e67f17/602929ecec62f016b93786b3.jpg"
+		},
+		{
+			"_id": "5ace3bf76365431e5259a6fc",
+			"search_slug": "sri-lanka",
+			"name": "Sri Lanka",
+			"slug": "sri-lanka",
+			"image": "locations/5ace3bf76365431e5259a6fc/5e53d2f5ac05187d071f5540.jpg"
+		},
+		{
+			"_id": "594baecf117f74d066e67f26",
+			"search_slug": "sweden",
+			"name": "Sweden",
+			"slug": "sweden",
+			"image": "locations/594baecf117f74d066e67f26/5e53d2f2ac05187d071f551e.jpg"
+		},
+		{
+			"_id": "614c5aa918369904ff68d960",
+			"search_slug": "switzerland",
+			"name": "Switzerland",
+			"slug": "switzerland",
+			"image": "locations/614c5aa918369904ff68d960/614c5aa918369904ff68d961.jpg"
+		},
+		{
+			"_id": "5affde6f27d87f23432cf182",
+			"search_slug": "tanzania",
+			"name": "Tanzania",
+			"slug": "tanzania",
+			"image": "locations/5affde6f27d87f23432cf182/60015b7987314f20bf586671.jpg"
+		},
+		{
+			"_id": "594baecf117f74d066e67f23",
+			"search_slug": "thailand",
+			"name": "Thailand",
+			"slug": "thailand",
+			"image": "locations/594baecf117f74d066e67f23/5e53d2eaac05187d071f54a8.jpg"
+		},
+		{
+			"_id": "594baece117f74d066e67f1c",
+			"search_slug": "the-bahamas",
+			"name": "The Bahamas",
+			"slug": "the-bahamas",
+			"image": "locations/594baece117f74d066e67f1c/5e53d2e8ac05187d071f5490.jpg"
+		},
+		{
+			"_id": "5baa57a60abd7b74a5511097",
+			"search_slug": "tonga",
+			"name": "Tonga",
+			"slug": "tonga",
+			"image": "locations/5baa57a60abd7b74a5511097/5e53d31dac05187d071f575a.jpg"
+		},
+		{
+			"_id": "594baecd117f74d066e67f14",
+			"search_slug": "turkey",
+			"name": "Turkey",
+			"slug": "turkey",
+			"image": "locations/594baecd117f74d066e67f14/602a296c4d121d6b9b15c485.jpg"
+		},
+		{
+			"_id": "594baece117f74d066e67f1b",
+			"search_slug": "usa",
+			"name": "USA",
+			"slug": "usa",
+			"image": "locations/594baece117f74d066e67f1b/6026751209c8e108be422d8c.jpg"
+		},
+		{
+			"_id": "5f8d4fba2430140c937764dd",
+			"search_slug": "ukraine",
+			"name": "Ukraine",
+			"slug": "ukraine",
+			"image": "locations/5f8d4fba2430140c937764dd/600152d5fc3c5a2d012c004a.jpg"
+		},
+		{
+			"_id": "59567599a7037915c61e84a4",
+			"search_slug": "united-arab-emirates",
+			"name": "United Arab Emirates",
+			"slug": "united-arab-emirates",
+			"image": "locations/59567599a7037915c61e84a4/5e53d2f4ac05187d071f5534.jpg"
+		},
+		{
+			"_id": "5b0fd40c27d87f07af5518a7",
+			"search_slug": "united-kingdom",
+			"name": "United Kingdom",
+			"slug": "united-kingdom",
+			"image": "locations/5b0fd40c27d87f07af5518a7/602a233adbca2727527be777.jpg"
+		}
+	],
+	"statusCode": 200
+}

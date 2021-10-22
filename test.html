@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>test</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
+	
+	<style>
+		[data-dap=false]{display:none !important}
+		[ui=click]{cursor:pointer;}
+		
+		
+		#map {
+		  height: 600px;
+		}
+
+		html,
+		body {
+		  height: 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+
+	</style>
+	
+	<link rel="stylesheet" href="https://dap.js.org/stuff/css/material.css"/>
+	
+	<!-- <script type="module" src="vesselrent.js"></script> -->
+
+	<script>
+	
+		const points=[
+				"12345	45.04:34.04	Streleckaya bay	8	2500-3400",
+				"12346	45.14:34.24	Streleckaya bay	12	2500-3400",
+				"12347	45.24:34.14	Streleckaya bay	6	2500-3400",
+				"12348	45.34:34.34	Streleckaya bay	11	2500-3400",
+		].map(str=>str.split(/\t/g)),
+		
+		coords = pos => new google.maps.LatLng(...pos.split(":")),
+		
+		Marker = ([id,pos,name,qty,prices]) => new google.maps.Marker({
+			id,
+			label:qty,
+			title:name+"\n"+prices,
+			position: coords(pos),
+			optimized: true
+		}),
+		
+		Feature = ([id,pos,name,qty,prices]) => /**/new google.maps.Data.Feature({
+			id,
+			geometry:new google.maps.Data.Point(coords(pos)), //{ position: },
+			properties:{
+				name,qty,prices
+			}
+		}),
+		
+		click = e => {
+			console.log(e);
+		};
+	
+	
+		function initMap() {
+			const center = { lat: 44, lng: 33 },
+				container = document.getElementById("map");
+			
+			const map = new google.maps.Map( container, { zoom: 8, center, disableDefaultUI: true });
+			
+			map.addListener("dragend", e => {
+				const pos=map.center;//(pos);
+				console.log("center_changed to: "+pos.lat());
+			});
+
+			points.map(Marker).forEach(m => {
+				m.setMap(map);
+				m.addListener("click", e=>{
+					console.log(m.id);
+					map.panTo(m.getPosition());
+					container.value = m.id;
+					container.dispatchEvent( new CustomEvent('marker', { detail:m }));
+				});
+			});
+			
+			container.addEventListener('marker', e=>{
+				console.log(e);
+			});
+			
+			
+/*
+			new MarkerClusterer({ markers:points.map(Marker), map })
+*/			
+
+/*			
+			points.map(Feature).forEach( f=> map.data.add(f) );
+			map.data.addListener('click', e =>
+				console.log(e.feature.getId())//getProperty("id")
+			);
+*/		
+		}		
+	</script>
+	<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBALH6vLZir1LYeGlRryY66aKjo3Kji90o&callback=initMap&v=weekly"></script>
+</head>
+
+<body>
+	<div id="map"></div>	
+</body>
+</html>
