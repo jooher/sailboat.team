@@ -1,5 +1,5 @@
 .offer{/* padding: 1em; */padding: 1rem;/* margin: .2em; */background: white;border-bottom: ;transition: background-color 2s ease-out;}
-.offer.focused{/* border: 1px solid lightgray; *//* margin-top: -1px; */background: cornsilk;box-shadow: 0 2px 3px rgba(0,0,0,.1);border-radius: 1em;margin: 1em 0;}
+.offer.focused{/* border: 1px solid lightgray; *//* margin-top: -1px; */background: cornsilk;/* box-shadow: 0 2px 3px rgba(0,0,0,.1); *//* border-radius: 1em; */margin: 1em 0;}
 
 .brief{position:relative;overflow: hidden;white-space: nowrap;background: inherit;/* padding-right: 4em; */}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
@@ -12,13 +12,14 @@
 .weeks>.week{flex:1;margin: 1px;height: .5em; background-color: lightgreen;}
 .week.busy{background-color: lightgray; border: red;}
 
-.gallery{margin: 1rem -1rem;overflow-x:scroll;white-space: nowrap;background: white;padding: 0 1em;box-shadow: 0 2px 4px rgb(0 0 0 / 25%);}
+.gallery{margin: 1rem -1rem;overflow-x:scroll;white-space: nowrap;background: white;/* padding: 0 1em; */box-shadow: 0 2px 4px rgb(0 0 0 / 25%);}
 .gallery>img{max-height: 320px;/* min-height: 400px; */margin: 0 1px;vertical-align: middle;}
 
 
 attic {
   background: darkslategray;
   color: white;
+  height: 4em;
 }
 
 .specs>span {
@@ -27,35 +28,12 @@ attic {
   background: lavender 2px no-repeat;
   padding-left: 21px;
 }
-/*
-.specs>span::before {
-  font-size: 1.5rem;
-}
 
-.specs>.sleeps::before{
-	content: "☺ ";
-}
-
-.specs>.cabins::before{
-	content: "🛏 ";
-}
-
-.specs>.wc::before{
-	content: "🆏 ";
-	font-family: u1f400;
-}
-
-.specs>.hp::before{
-	content: "❊ ";
-	vertical-align: sub;
-}
-*/
 .specs>.hp::after{
 	content:"hp"
 }
 
 .specs {
-  /* color: gray; */
   font-size: .9em;
   margin-top: .5em;
 }
@@ -107,7 +85,7 @@ input {
   padding: .25em 0;
   font-size: 1.2em;
   border-color: lightgray;
-  background-color: aliceblue;
+  background-color: lavender;
 }
 
 label {
@@ -135,5 +113,5 @@ input[type="submit"] {
 }
 
 .book>attic {
-  background: darkslategray;
+  background: darkslateblue;
 }

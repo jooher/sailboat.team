@@ -77,7 +77,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 
 'APP'.d("$shipclass= $week=`3 $bay= $book="
 
-	,'PAGE.area'.d("focus $book:!"
+	,'PAGE.area'.d("a!"//
 	
 		,'ETAGE'.d(""
 		
@@ -95,13 +95,13 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 			,'SECTION.ships'.d("? $bay; Ships( ( `//api.boataround.com/v1/search? $bay:slug@destinations `& $shipclass@)uri:query,boats@ships )")//db@ `ships? $bay $week
 		)		
 		
-	)
+	).a("focus $book:!")
 	
-	,'PAGE.book'.d("focus $book"
+	,'PAGE.book#book'.d(""
 		,'ATTIC.brief'.d("! ($book.make@title $book.name@subtitle)divs")
 		,"FORM action=/submit _action=https://www.boataround.com/final-details method=post target=boataround"
 			.d("! ($book._id@boat_id)hiddens (`name @email`email @tel`phone-number @week`week @submit)inputs")
-	)
+	).a("focus $book")
 	
 )
 
@@ -135,7 +135,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				)
 				
 				,'BUTTON.order `See charter details'.ui("$book=$")
-				
+				,'A href=#book `book>>>'.d()
 			)
 		).a("!? $?@focused")
 	),

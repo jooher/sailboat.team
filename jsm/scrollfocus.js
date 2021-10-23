@@ -1,6 +1,6 @@
 let	x=null,y=null,toFocus=null;
 
-const scrollOptions={behavior:"smooth",inline:"end",block:"start"},
+const scrollOptions={behavior:"smooth"},//,inline:"end",block:"start"
 
 	stopped = e=> y==(y=window.scrollY) && x==(x=window.scrollX),
 
@@ -22,7 +22,8 @@ export default (target,scrollToTag) => {
 	toFocus=target;
 	setTimeout( _=>{
 		const scrolltgt = scrollToTag ? upTo(target,scrollToTag) || target : null;
-		if(scrolltgt)scrolltgt.scrollIntoView(scrollOptions);
+		if(scrolltgt)
+			scrolltgt.scrollIntoView(scrollOptions);
 		if(target.focus)setTimeout(scrollEnd,100);
 	},0);
 }
