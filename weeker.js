@@ -14,7 +14,7 @@ const geomap = gmap({ zoom: 4, center: {lat:50,lng:24}, disableDefaultUI: true, 
 	dap = window["https://dap.js.org/"],
 	grab	= src	=> [...(src.parentNode.removeChild(src)).children].reduce((a,n)=>{if(n.id)a[n.id]=src.removeChild(n); return a},{}),
 	dict	= grab(document.getElementById("data"));
-
+	
 const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // Tab-separated values
 
 	options = txt => tsv(txt).map( ([id,value,title])=>({value,title}) ),
@@ -97,8 +97,13 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		
 	).a("focus $book:!")
 	
-	,'PAGE.book#book'.d(""
+	,'PAGE.book'.d(""
 		,'ATTIC.brief'.d("! ($book.make@title $book.name@subtitle)divs")
+	/*
+		,'weeks'.d("* (db@ `price $boat.slug $month:weeks)uri@query:tsv"
+			'week'.d("! (.price .week:week2date)divs").ui("$week=.")
+		)
+	*/
 		,"FORM action=/submit _action=https://www.boataround.com/final-details method=post target=boataround"
 			.d("! ($book._id@boat_id)hiddens (`name @email`email @tel`phone-number @week`week @submit)inputs")
 	).a("focus $book")
@@ -124,7 +129,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 					,'week'.d("!? .busy")
 				)
 			).ui("$?=$?:!")
-			,'details'.d("? $?"
+			,'details'.d("? $?; focus $?@offer"
 				,'gallery'.d("? .pics .pics=(db@ .slug)uri:query,pics; * .pics@src"
 					,'IMG'.d("!! .src")
 				)
@@ -135,7 +140,6 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				)
 				
 				,'BUTTON.order `See charter details'.ui("$book=$")
-				,'A href=#book `book>>>'.d()
 			)
 		).a("!? $?@focused")
 	),

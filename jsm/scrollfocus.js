@@ -1,6 +1,6 @@
 let	x=null,y=null,toFocus=null;
 
-const scrollOptions={behavior:"smooth"},//,inline:"end",block:"start"
+const scrollOptions={behavior:"smooth",block:"end"},//,inline:"end"
 
 	stopped = e=> y==(y=window.scrollY) && x==(x=window.scrollX),
 

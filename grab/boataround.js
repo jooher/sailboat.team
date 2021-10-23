@@ -11,7 +11,7 @@ categories	= {
 },
 
 specs	= p => ({
-	sleeps: p.max_sleeps|p.max_people,
+	sleeps: Math.max(p.max_sleeps,p.max_people),
 	cabins: p.double_cabins+p.triple_cabins,
 	wc: p.toilets+p.electric_toilets,
 	hp: p.engine
@@ -115,11 +115,21 @@ export default {
 				.map(pic)
 			)
 		),
+	//https://api.boataround.com/v1/price/bavaria-50-flurry?checkIn=2021-12-25&checkOut=2022-01-01
+	availability: (slug,)=>{
+	},
 
-	
 	convert:{
 		boats, slug,
-		pics: txt => txt.split("\n").map(pic)
+		pics: txt => txt.split("\n").map(pic),
+		
+		weeks: dates=>{
+			const intervals = [];
+			for(let i=0; ++i<dates.length;)
+				intervals.push("checkIn="+dateStr(dates[i])+"&checkOut="+dateStr(dates[i+1]));
+			console.log(intervals.join("; "));
+			return intervals;
+		}
 	}
 	
 }

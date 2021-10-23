@@ -1,9 +1,11 @@
-.offer{/* padding: 1em; */padding: 1rem;/* margin: .2em; */background: white;border-bottom: ;transition: background-color 2s ease-out;}
-.offer.focused{/* border: 1px solid lightgray; *//* margin-top: -1px; */background: cornsilk;/* box-shadow: 0 2px 3px rgba(0,0,0,.1); *//* border-radius: 1em; */margin: 1em 0;}
+.ships {background: whitesmoke;padding-bottom: 2em;}
 
-.brief{position:relative;overflow: hidden;white-space: nowrap;background: inherit;/* padding-right: 4em; */}
+.offer{padding: 1rem; background: white;border-bottom: ;transition: background-color 2s ease-out;}
+.offer.focused{box-shadow: 0 2px 6px rgb(0 0 0 / 10%);margin: 6px 0;box-sizing: border-box;}
+
+.brief{position:relative;overflow: hidden;white-space: nowrap;background: inherit;}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
-.brief>.subtitle{color: lightcoral;font-style: italic;font-family:cursive;display: inline;/* margin: .5em; */}
+.brief>.subtitle{color: lightcoral;font-style: italic;font-family:cursive;display: inline;}
 .brief>.note{color:gray; font-size:.9em}
 .brief>.price{position:absolute;background: inherit;padding: 0 .2em;right:0;top: 0;}
 
@@ -12,8 +14,8 @@
 .weeks>.week{flex:1;margin: 1px;height: .5em; background-color: lightgreen;}
 .week.busy{background-color: lightgray; border: red;}
 
-.gallery{margin: 1rem -1rem;overflow-x:scroll;white-space: nowrap;background: white;/* padding: 0 1em; */box-shadow: 0 2px 4px rgb(0 0 0 / 25%);}
-.gallery>img{max-height: 320px;/* min-height: 400px; */margin: 0 1px;vertical-align: middle;}
+.gallery{margin: 1rem -1rem;height: 320px;overflow-x:scroll;overflow-y: hidden;white-space: nowrap;background: white;}
+.gallery>img{max-height: 320px; margin: 0 1px;vertical-align: middle;}
 
 
 attic {
@@ -102,9 +104,6 @@ label::before {
 }
 
 input[type="submit"] {
-  /* display: inline; */
-  /* margin-top: 2em; */
-  /* width: 16em; */
   padding: 1em;
   border: none;
   border-radius: 4px;
