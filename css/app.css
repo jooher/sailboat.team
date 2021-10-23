@@ -1,7 +1,7 @@
-.ships {background: whitesmoke;padding-bottom: 2em;}
+.ships {background: ghostwhite;padding-bottom: 2em;}
 
-.offer{padding: 1rem; background: white;border-bottom: ;transition: background-color 2s ease-out;}
-.offer.focused{box-shadow: 0 2px 6px rgb(0 0 0 / 10%);margin: 6px 0;box-sizing: border-box;}
+.offer{padding: 1rem;background: ghostwhite;border-bottom: ;transition: background-color 2s ease-out;}
+.offer.focused{background-color: white;box-shadow: 0 2px 6px rgb(0 0 0 / 10%);margin: 6px 0;box-sizing: border-box;}
 
 .brief{position:relative;overflow: hidden;white-space: nowrap;background: inherit;}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
