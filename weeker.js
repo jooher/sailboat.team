@@ -2,6 +2,9 @@ import "./0.5.js";//"https://dap.js.org/0.5.js";
 import boataround from "./grab/boataround.js";
 import scrollfocus from "./jsm/scrollfocus.js";	
 
+import mwx from "./jsm/weeks.js";
+const mw = mwx("ru",Date.now());
+
 /*
 import Await from "/./stuff/await.js";
 import Persist from "/./stuff/persist.js";
@@ -75,7 +78,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 //export default
 
-'APP'.d("$shipclass= $week=`3 $bay= $book="
+'APP'.d("$shipclass= $week=`3 $bay= $book= $month=:date"
 
 	,'PAGE.area'.d("a!"//
 	
@@ -92,20 +95,32 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				).ui("$shipclass=#:value")
 			)
 			
-			,'SECTION.ships'.d("? $bay; Ships( ( `//api.boataround.com/v1/search? $bay:slug@destinations `& $shipclass@)uri:query,boats@ships )")//db@ `ships? $bay $week
+			,'SECTION.ships'.d("? $bay; Ships( ( `//api.boataround.com/v1/search? $bay:ba.slug@destinations `& $shipclass@)uri:query,ba.boats@ships )")//db@ `ships? $bay $week
 		)		
 		
 	).a("focus $book:!")
 	
-	,'PAGE.book'.d(""
+	,'PAGE.book'.d("$week=" //
 		,'ATTIC.brief'.d("! ($book.make@title $book.name@subtitle)divs")
-	/*
-		,'weeks'.d("* (db@ `price $boat.slug $month:weeks)uri@query:tsv"
-			'week'.d("! (.price .week:week2date)divs").ui("$week=.")
+		
+		,'SECTION.dates'.d(""
+		
+			,'SELECT.months'.d("*@mo .mo=:mw.months"
+				,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")//!? (.value $month)eq@selected
+			).ui("$month=#:value; ?")
+
+			,'weeks'.d("? $book; *@ $month:saturdays"// 
+				,'week'.d(""
+					,'dates'.d("!! .start@title .start:hum@")//mw.ddmm
+					,'price'.d("! (`//api.boataround.com/v1/price/ $book.slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
+				).ui("$week=$")
+			)
 		)
-	*/
+/**/		
+
 		,"FORM action=/submit _action=https://www.boataround.com/final-details method=post target=boataround"
-			.d("! ($book._id@boat_id)hiddens (`name @email`email @tel`phone-number @week`week @submit)inputs")
+			.d("! ($book._id@boat_id)hiddens (`name @email`email @tel`phone-number @submit)inputs")
+			
 	).a("focus $book")
 	
 )
@@ -123,14 +138,14 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	Ships	
 	:'ships'.d("*@ .ships"//
 		,'offer'.d("$?="
-			,'brief'.d("? .busy .busy=( .weeks $week )near; ! Flag (.make@title .name@subtitle .note .price )divs "
+			,'brief'.d("? .busy .busy=( .weeks $week )near; ! Flag (.make@title .name@subtitle .note .price )divs"
 				,'specs'.d("! .specs:spans ")
-				,'weeks'.d("*@ .busy" 
+/* 				,'weeks'.d("*@ .busy" 
 					,'week'.d("!? .busy")
 				)
-			).ui("$?=$?:!")
+ */			).ui("$?=$?:!")
 			,'details'.d("? $?; focus $?@offer"
-				,'gallery'.d("? .pics .pics=(db@ .slug)uri:query,pics; * .pics@src"
+				,'gallery'.d("? .pics .pics=(db@ .slug)uri:query,ba.pics; * .pics@src"
 					,'IMG'.d("!! .src")
 				)
 				
@@ -176,12 +191,17 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		near	: values=>near(values.pop(),values.pop(),2)
 	},
 	
-	convert:{ tsv, options, divs, spans	}
+	convert:{ 	tsv, options, divs, spans, mw,
+			ba:boataround.convert,
+			saturdays:mw.weeks(6),
+			
+			date	: date => date&&date.toDateString(),
+			hum	: date => date&&date.toDateString().split(" ").slice(0,3).join(" "),
+			iso	: (pad => date => date&&[date.getFullYear(),pad(date.getMonth()+1),pad(date.getDate())].join("-"))(i=>i<10?"0"+i:i)
+		}
 	
 })
 
 .FUNC({convert:mapping})
-
-.FUNC({convert:boataround.convert})
 
 .RENDER();

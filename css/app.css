@@ -10,8 +10,8 @@
 .brief>.price{position:absolute;background: inherit;padding: 0 .2em;right:0;top: 0;}
 
 .brief>.weeks{position:absolute;right:0;top: 1.5em;width: 2.5em;}
-.weeks{display: flex;background: white;}
-.weeks>.week{flex:1;margin: 1px;height: .5em; background-color: lightgreen;}
+.weeks{display: flex;background: white;margin: 2em;}
+.weeks>.week{flex:1;margin: 1px;padding: .25em;/* height: .5em; */background-color: lightgreen;}
 .week.busy{background-color: lightgray; border: red;}
 
 .gallery{margin: 1rem -1rem;height: 320px;overflow-x:scroll;overflow-y: hidden;white-space: nowrap;background: white;}
@@ -40,7 +40,7 @@ attic {
   margin-top: .5em;
 }
 
-.price::after {content: " €";color: darkgrey;}
+.price::after {content: " €";/* color: darkgrey; */}
 
 img.flag {
   position: absolute;
@@ -105,12 +105,31 @@ label::before {
 
 input[type="submit"] {
   padding: 1em;
+  /* width: 12em; */
   border: none;
   border-radius: 4px;
   background: gold;
+  margin: 1em auto;
   text-align: center;
 }
 
 .book>attic {
   background: darkslateblue;
+}
+
+.weeks {}
+
+.week>.dates {margin-top: -1.5em;text-align: left;color: gray;font-size: .8em;/* border-left: 1px solid gray; */}
+
+.week>.price {
+  line-height: 2em;
+}
+
+section.dates {
+  margin: 2em;
+}
+
+select.months {
+  font-size: 1.5em;
+  border: none;
 }

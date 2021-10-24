@@ -64,6 +64,8 @@ boats = json => json.data[0].data && json.data[0].data
 	})
 ),
 
+price = json => json.data[0].data && Math.round(json.data[0].data[0].totalPrice),
+
 pic	=  key => "https://imageresizer.yachtsbt.com/boats/"+key+"?method=fit&width=859&height=450&format=jpeg",
 	
 save = (name,data,asis) => {
@@ -83,8 +85,6 @@ countries = "russia ukraine romania bulgaria turkey tunisia greece croatia italy
 
 
 export default {
-	
-	test: _ => alert("ok"),
 	
 	getCountries : _countries => 
 		fetch("https://api.boataround.com/v1/getDestinations/en_EN?destinationSearches="+countries.join(","))
@@ -116,11 +116,10 @@ export default {
 			)
 		),
 	//https://api.boataround.com/v1/price/bavaria-50-flurry?checkIn=2021-12-25&checkOut=2022-01-01
-	availability: (slug,)=>{
-	},
 
 	convert:{
-		boats, slug,
+		boats, slug, price,
+		
 		pics: txt => txt.split("\n").map(pic),
 		
 		weeks: dates=>{
