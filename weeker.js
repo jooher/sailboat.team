@@ -97,27 +97,28 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 			
 			,'SECTION.ships'.d("? $bay; Ships( ( `//api.boataround.com/v1/search? $bay:ba.slug@destinations `& $shipclass@)uri:query,ba.boats@ships )")//db@ `ships? $bay $week
 			
-			,'SECTION.intro'.d("? $bay:!; ! html.intro")
+			//,'SECTION.intro'.d("? $bay:!; ! html.intro")
 		)		
 		
 	).a("focus $book:!")
 	
-	,'PAGE.book'.d("*@ $book" //
+	,'PAGE.book'.d("" //
 	
-		,'ATTIC.brief'.d("! (.boat.make@title .boat.name@subtitle (.week.start:hum `— .week.end:hum)spaced )divs")
+		,'ATTIC.brief'.d("! html.bookat")
 		
-		,'ETAGE'.d(""
+		,'ETAGE'.d("*@ $book"
 		
-			,'A.xboatdetails target=boataround'.d("!! (`https://www.boataround.com/boat/ $book.boat.slug)concat@href")
+			,'brief.focused'.d("! (.boat.make@title .boat.name@subtitle (.week.start:hum `— .week.end:hum)spaced )divs")
+		
+			,'A.xboatdetails target=boataround'.d("!! (`https://www.boataround.com/boat/ .boat.slug)concat@href")
 						
 			//www.boataround.com/enter-your-details/bavaria-44-fanourios?checkIn=2021-11-20&checkOut=2021-11-27
-			
-			,'cta'.d("! html.bookat")
 
+			,'SECTION.info'.d("! html.book")
+			
 			,'FORM target=boataround action=/submit _action=//www.boataround.com/final-details method=post'
 				.d("! ($book._id@boat_id .week.start:iso@checkInDate .week.end:iso@checkOutDate)hiddens (`name `surname @email`email @tel`phone-number @submit)inputs")
 				
-			,'SECTION.info'.d("! html.book")
 			
 		)
 		

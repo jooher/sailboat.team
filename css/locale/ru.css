@@ -1,4 +1,5 @@
-label.name::before{ content: "Ваши имя и фамилия"}
+label.name::before{ content: "Имя"}
+label.surname::before{ content: "Фамилия"}
 label.phone-number::before{ content: "Телефон (с кодом страны)"}
 label.email::before{ content: "Email"}
 label.week::before{ content: "Даты аренды"}

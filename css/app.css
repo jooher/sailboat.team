@@ -53,7 +53,7 @@ img.flag {
   top: 6px;
 }
 
-.offer.focused>.brief>.subtitle,.book>.brief>.subtitle {
+.focused>.brief>.subtitle, etage>.brief>.subtitle {
   display: block;
 }
 
@@ -81,7 +81,7 @@ page.book{
 form {
   margin: 1em;
   text-align: left;
-  padding: 1em;
+  /* padding: 1em; */
 }
 
 input {
@@ -97,7 +97,7 @@ input {
 
 label {
   display: block;
-  margin-top: 2em;
+  margin-top: 1em;
   width: 100%;
 }
 
@@ -159,6 +159,10 @@ section.dates {
 }
 
 body {
-  max-width: 640px;
-  overflow-x: hidden;
+  /* max-width: 640px; */
+  /* overflow-x: hidden; */
+}
+
+etage>.brief {
+  margin: 1em;
 }
