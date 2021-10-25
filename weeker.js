@@ -103,24 +103,15 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	,'PAGE.book'.d("$week=" //
 		,'ATTIC.brief'.d("! ($book.make@title $book.name@subtitle)divs")
 		
-		,'SECTION.dates'.d(""
-		
-			,'SELECT.months'.d("*@mo .mo=:mw.months"
-				,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")//!? (.value $month)eq@selected
-			).ui("$month=#:value; ?")
-
-			,'weeks'.d("? $book; *@ $month:saturdays"// 
-				,'week'.d(""
-					,'dates'.d("!! .start@title .start:hum@")//mw.ddmm
-					,'price'.d("! (`//api.boataround.com/v1/price/ $book.slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
-				).ui("$week=$")
+		,'ETAGE'.d(""
+			,"FORM target=boataround action=/submit _action=https://www.boataround.com/final-details method=post"
+				.d("! ($book._id@boat_id)hiddens (`name @email`email @tel`phone-number @submit)inputs")
+				
+			,'SECTION.info'.d("! html.book"
+				,'A target=boataround'.d("!! (`https://www.boataround.com/)@href")
 			)
 		)
-/**/		
-
-		,"FORM action=/submit _action=https://www.boataround.com/final-details method=post target=boataround"
-			.d("! ($book._id@boat_id)hiddens (`name @email`email @tel`phone-number @submit)inputs")
-			
+		
 	).a("focus $book")
 	
 )
@@ -129,6 +120,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 	db: "//orders.saxmute.one/weeker/gate.php?",
 	
+	html: dict,
 	
 	shipclasses: options(dict.shipclasses.textContent.replace(/\+/g,"&")),
 	
@@ -144,17 +136,34 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 					,'week'.d("!? .busy")
 				)
  */			).ui("$?=$?:!")
+ 
 			,'details'.d("? $?; focus $?@offer"
+			
 				,'gallery'.d("? .pics .pics=(db@ .slug)uri:query,ba.pics; * .pics@src"
 					,'IMG'.d("!! .src")
 				)
 				
+				,'dates'.d("$month=.."
+				
+					,'SELECT'.d("*@mo .mo=:mw.months"
+						,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")//!? (.value $month)eq@selected
+					).ui("$month=#:value; ?")
+
+					,'weeks'.d("*@ $month:saturdays" //? $book; 
+						,'week'.d(""
+							,'dates'.d("!! .start@title .start:hum@")
+							,'price'.d("! (`//api.boataround.com/v1/price/ ..slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
+						).ui("$week=$")
+					)
+				)
+/*				
 				,'more'.d(""
 					,'checklists'.d()
 					,'feedback'.d()
 				)
 				
 				,'BUTTON.order `See charter details'.ui("$book=$")
+*/
 			)
 		).a("!? $?@focused")
 	),

@@ -2,3 +2,5 @@ label.name::before{ content: "Ваши имя и фамилия"}
 label.phone-number::before{ content: "Телефон (с кодом страны)"}
 label.email::before{ content: "Email"}
 label.week::before{ content: "Даты аренды"}
+
+.brief>.price::before {content: "от "}

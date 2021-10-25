@@ -6,6 +6,14 @@ const
 		ru_	: "янв фев мар апр май июн июл авг сен окт ноя дек",
 		en	: "January February March April May June July August September October November December",
 		en_	: "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+	},
+	
+	weeks = (year,month,day) => {
+		const shift	= day+1 - new Date(year,month,1).getDay();
+		return sevens.map( ofs => ({
+			start: new Date(year,month,shift+ofs),
+			end: new Date(year,month,shift+ofs+7)
+		}));
 	};
 
 export default lang => {
@@ -21,15 +29,11 @@ export default lang => {
 		mmyy	: d => monthnames[d.getMonth()]+' '+d.getFullYear(),
 		ddmm	: d => d.getDate(),
 		
-		weeks	: d => str =>{
-				const date	= str ? new Date(str) : new Date(),
+		weeks	: d => str => {
+				const date	= str ? new Date(str) : now,
 					year	= date.getFullYear(),
-					month	= date.getMonth(),
-					shift	= d+1 - new Date(year,month,1).getDay();//6-2=4
-				return sevens.map( ofs => ({
-						start: new Date(year,month,shift+ofs),
-						end: new Date(year,month,shift+ofs+7)
-					}));
+					month	= date.getMonth();
+				return weeks(year,month,d);
 			}				
 	}
 }
