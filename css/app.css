@@ -8,11 +8,14 @@
 .brief>.subtitle{color: lightcoral;font-style: italic;font-family:cursive;display: inline;}
 .brief>.note{color:gray; font-size:.9em}
 .brief>.price{position:absolute;background: inherit;padding: 0 .2em;right:0;top: 0;}
+.brief>.price::before {color: lightgray;font-size: .8em;}
 
+/*
 .brief>.weeks{position:absolute;right:0;top: 1.5em;width: 2.5em;}
-.weeks{display: flex;flex: 1;/* background: white; *//* margin: 2em; *//* vertical-align: baseline; */}
-.weeks>.week{flex:1;margin: 2px;/* padding: .25em; *//* height: .5em; *//* background-color: lightgreen; */}
 .week.busy{background-color: lightgray; border: red;}
+*/
+.weeks{display: flex;vertical-align: bottom;}
+.weeks>.week{flex:1;margin: 2px;}
 
 .gallery{margin: 1rem -1rem;height: 320px;overflow-x:scroll;overflow-y: hidden;white-space: nowrap;background: white;}
 .gallery>img{max-height: 320px; margin: 0 1px;vertical-align: middle;}
@@ -107,7 +110,6 @@ label::before {
 
 input[type="submit"] {
   padding: 1em;
-  /* width: 12em; */
   border: none;
   border-radius: 4px;
   background: gold;
@@ -119,7 +121,7 @@ input[type="submit"] {
   background: darkslateblue;
 }
 
-.week>.dates {margin-top: -1.5em;text-align: left;color: gray;font-size: .8em;/* border-left: 1px solid gray; */}
+.week>.dates {margin-top: -1.5em;text-align: left;color: gray;font-size: .8em;}
 
 .week>.price {
   line-height: 2em;
@@ -144,14 +146,13 @@ section.dates {
   vertical-align: bottom;
 }
 
-.dates {
-  display: flex;
+.weeks {
   margin-top: 2em;
 }
 
-.week>.dates::after {content: " — ";margin-left: .25em;}
+.week>.dates::after {/* content: " >"; */margin-left: .25em;}
 
-.brief>.price::before {
-  color: lightgray;
-  font-size: .8em;
+@media(min-width:480px){
+	.dates { display: flex; }
+	.weeks{ flex: 1;}
 }
