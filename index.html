@@ -18,6 +18,10 @@
 	<link rel="stylesheet" href="css/app.css"/>
 	<link rel="stylesheet" href="css/locale/ru.css"/>
 	
+	<link rel="shortcut icon" href="/icon128.png">
+	
+	<link rel="manifest" href="manifest.json"/>
+	
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBALH6vLZir1LYeGlRryY66aKjo3Kji90o&callback=initMap&v=weekly"></script>
 	
 	
@@ -28,6 +32,11 @@
 <script type="module" src="weeker.js"></script>
 	
 <section id="data">
+
+<article id="intro">
+<h2>Выберите регион чартера</h2>
+<p>На данный момент база содержит актуальную информацию о более чем 15 тыс. чартерных лодок в Европе. Красными маркерами на карте показаны марины, число показывает количествво доступных лодок.</p>
+</article>
 	
 <article id = "shipclasses-about">
 
@@ -97,9 +106,28 @@
 <p>Эту яхту можно забронировать<br/>на Boataround.com</p>
 </article>
 
-
-
 </section>
 	
 </body>
+
+
+<script>
+
+	if(navigator.serviceWorker)
+		window.addEventListener('load', e=>
+			navigator.serviceWorker.register('service-worker.js')
+			.then(registration=>console.log('Registered!'),err=>console.log('Registration failed: ', err))
+			.catch(err=>console.log(err))
+		)
+	else
+		console.log('service worker is not supported');
+		
+	// prevent from exit by back button
+	(stay =>{
+		window.addEventListener('load', stay);
+		window.addEventListener('popstate', stay);
+	})(e=>{window.history.pushState({},'')})
+
+</script>
+
 </html>
