@@ -4,3 +4,6 @@ label.email::before{ content: "Email"}
 label.week::before{ content: "Даты аренды"}
 
 .brief>.price::before {content: "от "}
+
+a.xboatdetails::before{content: "Подробнее об этой лодке"}
+.firsttime::before{content: "Что нужно знать, арендуя лодку в первый раз"}

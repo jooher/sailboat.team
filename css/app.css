@@ -138,12 +138,13 @@ section.dates {
 }
 
 .dates>select {
-  display: inline-block;
+  /* display: inline-block; */
   border: none;
   background: none;
-  padding: 0;
-  margin: 0;
-  vertical-align: bottom;
+  /* padding: 0; */
+  /* margin: 0; */
+  /* vertical-align: bottom; */
+  outline: none;
 }
 
 .weeks {
@@ -155,4 +156,9 @@ section.dates {
 @media(min-width:480px){
 	.dates { display: flex; }
 	.weeks{ flex: 1;}
+}
+
+body {
+  max-width: 640px;
+  overflow-x: hidden;
 }

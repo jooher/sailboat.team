@@ -100,16 +100,23 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		
 	).a("focus $book:!")
 	
-	,'PAGE.book'.d("$week=" //
-		,'ATTIC.brief'.d("! ($book.make@title $book.name@subtitle)divs")
+	,'PAGE.book'.d("*@ $book" //
+	
+		,'ATTIC.brief'.d("! (.boat.make@title .boat.name@subtitle (.week.start:hum `— .week.end:hum)spaced )divs")
 		
 		,'ETAGE'.d(""
-			,"FORM target=boataround action=/submit _action=https://www.boataround.com/final-details method=post"
-				.d("! ($book._id@boat_id)hiddens (`name @email`email @tel`phone-number @submit)inputs")
+		
+			,'A.xboatdetails target=boataround'.d("!! (`https://www.boataround.com/boat/ $book.boat.slug)concat@href")
+						
+			//www.boataround.com/enter-your-details/bavaria-44-fanourios?checkIn=2021-11-20&checkOut=2021-11-27
+			
+			,'cta'.d("! html.bookat")
+
+			,'FORM target=boataround action=/submit _action=//www.boataround.com/final-details method=post'
+				.d("! ($book._id@boat_id .week.start:iso@checkInDate .week.end:iso@checkOutDate)hiddens (`name `surname @email`email @tel`phone-number @submit)inputs")
 				
-			,'SECTION.info'.d("! html.book"
-				,'A target=boataround'.d("!! (`https://www.boataround.com/)@href")
-			)
+			,'SECTION.info'.d("! html.book")
+			
 		)
 		
 	).a("focus $book")
@@ -149,11 +156,11 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 						,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")//!? (.value $month)eq@selected
 					).ui("$month=#:value; ?")
 
-					,'weeks'.d("*@ $month:saturdays" //? $book; 
+					,'weeks'.d("$boat=$; *@ $month:saturdays" //? $book; 
 						,'week'.d(""
 							,'dates'.d("!! .start@title .start:hum@")
 							,'price'.d("! (`//api.boataround.com/v1/price/ ..slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
-						).ui("$week=$")
+						).ui("$book=( $boat $@week )")
 					)
 				)
 /*				
