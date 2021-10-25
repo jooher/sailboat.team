@@ -138,6 +138,9 @@ section.dates {
 .dates>select {
   display: inline-block;
   border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
   vertical-align: bottom;
 }
 
