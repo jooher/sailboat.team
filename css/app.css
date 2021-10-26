@@ -10,10 +10,7 @@
 .brief>.price{position:absolute;background: inherit;padding: 0 .2em;right:0;top: 0;}
 .brief>.price::before {color: lightgray;font-size: .8em;}
 
-/*
-.brief>.weeks{position:absolute;right:0;top: 1.5em;width: 2.5em;}
-.week.busy{background-color: lightgray; border: red;}
-*/
+
 .weeks{display: flex;vertical-align: bottom;}
 .weeks>.week{flex:1;margin: 2px;}
 
@@ -81,7 +78,6 @@ page.book{
 form {
   margin: 1em;
   text-align: left;
-  /* padding: 1em; */
 }
 
 input {
@@ -138,12 +134,8 @@ section.dates {
 }
 
 .dates>select {
-  /* display: inline-block; */
   border: none;
   background: none;
-  /* padding: 0; */
-  /* margin: 0; */
-  /* vertical-align: bottom; */
   outline: none;
 }
 
@@ -166,7 +158,7 @@ etage>.brief {
 
 
 .extras {
-  margin-top: 2.4em;
+  /* margin-top: 2.4em; */
   position:relative;
   font-size: .8em;
 }
