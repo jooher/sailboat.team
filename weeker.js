@@ -97,14 +97,16 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 			
 			,'SECTION.ships'.d("? $bay; Ships( ( `//api.boataround.com/v1/search? $bay:ba.slug@destinations `& $shipclass@)uri:query,ba.boats@ships )")//db@ `ships? $bay $week
 			
-			//,'SECTION.intro'.d("? $bay:!; ! html.intro")
+			,'SECTION.intro'.d("? $bay:!; ! html.intro")
 		)		
 		
 	).a("focus $book:!")
 	
 	,'PAGE.book'.d("" //
 	
-		,'ATTIC.brief'.d("! html.bookat")
+		,'ETAGE'.d("? $book:!; ! html.book") //html.info
+	
+		,'ATTIC.brief'.d("? $book; ! html.bookat")
 		
 		,'ETAGE'.d("*@ $book"
 		
@@ -114,12 +116,10 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 						
 			//www.boataround.com/enter-your-details/bavaria-44-fanourios?checkIn=2021-11-20&checkOut=2021-11-27
 
-			,'SECTION.info'.d("! html.book")
-			
-			,'FORM target=boataround action=/submit _action=//www.boataround.com/final-details method=post'
+			,'FORM target=boataround _action=/submit action=https://www.boataround.com/final-details method=post'
 				.d("! ($book._id@boat_id .week.start:iso@checkInDate .week.end:iso@checkOutDate)hiddens (`name `surname @email`email @tel`phone-number @submit)inputs")
 				
-			
+			,'SECTION.info'.d("! html.book")
 		)
 		
 	).a("focus $book")
@@ -161,9 +161,10 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 
 					,'weeks'.d("$boat=$; *@ $month:saturdays" //? $book; 
 						,'week'.d(""
-							,'dates'.d("!! .start@title .start:hum@")
+							,'dates'.d("!! .start:hum@")
 							,'price'.d("! (`//api.boataround.com/v1/price/ ..slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
-						).ui("$book=( $boat $@week )")
+							.ui("$book=( $boat $@week )")
+						)
 					)
 				)
 /*				
@@ -205,7 +206,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 	flatten:{
 		divs, spans,
-		inputs: (values,tags) => values.map( (name,i) => label({ name, type:tags[i]||'text' }) ).reverse(),
+		inputs: (values,tags) => values.map( (name,i) => label({ name, type:tags[i]||'text', required:true }) ).reverse(),
 		hiddens: (values,tags) => values.map( (value,i) => input({ name:tags[i], value, type:'hidden'}) ),
 		near	: values=>near(values.pop(),values.pop(),2)
 	},
