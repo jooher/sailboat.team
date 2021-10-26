@@ -97,7 +97,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 			
 			,'SECTION.ships'.d("? $bay; Ships( ( `//api.boataround.com/v1/search? $bay:ba.slug@destinations `& $shipclass@)uri:query,ba.boats@ships )")//db@ `ships? $bay $week
 			
-			,'SECTION.intro'.d("? $bay:!; ! html.intro")
+			,'SECTION.intro'.d("? $bay:!; ! html.intro html.book")
 		)		
 		
 	).a("focus $book:!")
@@ -106,13 +106,13 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 		,'ETAGE'.d("? $book:!; ! html.book") //html.info
 	
-		,'ATTIC.brief'.d("? $book; ! html.bookat")
+		//,'ATTIC.brief'.d("? $book; ! html.bookat")
 		
 		,'ETAGE'.d("*@ $book"
 		
 			,'brief.focused'.d("! (.boat.make@title .boat.name@subtitle (.week.start:hum `— .week.end:hum)spaced )divs")
 		
-			,'A.xboatdetails target=boataround'.d("!! (`https://www.boataround.com/boat/ .boat.slug)concat@href")
+			,'A.xboatdetails target=boataround'.d("!! (`https://www.boataround.com/ru/boat/ .boat.slug)concat@href")
 						
 			//www.boataround.com/enter-your-details/bavaria-44-fanourios?checkIn=2021-11-20&checkOut=2021-11-27
 
@@ -147,10 +147,10 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				)
  */			).ui("$?=$?:!")
  
-			,'details'.d("? $?; focus $?@offer"
+			,'details'.d("? $?; focus $?@offer; ? .data .data=(db@ .slug)uri:query; *@ .data"
 			
-				,'gallery'.d("? .pics .pics=(db@ .slug)uri:query,ba.pics; * .pics@src"
-					,'IMG'.d("!! .src")
+				,'gallery'.d("* .pics@src"
+					,'IMG'.d("!! .src:ba.pic")
 				)
 				
 				,'dates'.d("$month=.."
@@ -162,19 +162,24 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 					,'weeks'.d("$boat=$; *@ $month:saturdays" //? $book; 
 						,'week'.d(""
 							,'dates'.d("!! .start:hum@")
-							,'price'.d("! (`//api.boataround.com/v1/price/ ..slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
+							,'price'.d("! (`//api.boataround.com/v1/price/ ...slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
 							.ui("$book=( $boat $@week )")
 						)
 					)
+				)
+				
+				,'extras'.d("*@ .extras"
+					,'extra'.d("! (.title .week .day)spans")
 				)
 /*				
 				,'more'.d(""
 					,'checklists'.d()
 					,'feedback'.d()
 				)
-				
+*/				
+				,'A.order'.d("!! ")
 				,'BUTTON.order `See charter details'.ui("$book=$")
-*/
+
 			)
 		).a("!? $?@focused")
 	),

@@ -8,3 +8,11 @@ label.week::before{ content: "Даты аренды"}
 
 a.xboatdetails::before{content: "Подробнее об этой лодке"}
 .firsttime::before{content: "Что нужно знать, арендуя лодку в первый раз"}
+
+
+.extras::before{
+	content: "Дополнительные опции";
+}
+
+.extra>.week:not(:empty)::after { content: " €/нед.";}
+.extra>.day:not(:empty)::after { content: " €/день";}

@@ -153,16 +153,42 @@ section.dates {
 
 .week>.dates::after {/* content: " >"; */margin-left: .25em;}
 
+/*
 @media(min-width:480px){
-	.dates { display: flex; }
+	.dates {display: flex;margin-top: 2em;}
 	.weeks{ flex: 1;}
 }
-
-body {
-  /* max-width: 640px; */
-  /* overflow-x: hidden; */
-}
+*/
 
 etage>.brief {
   margin: 1em;
+}
+
+
+.extras {
+  margin-top: 2.4em;
+  position:relative;
+}
+
+.extras::before{
+	position:absolute;
+	top: -1.5em;
+}
+
+.extra {
+  display: inline-block;
+  margin: 2px 2px;
+  padding: .2em.5em;
+  background: lavender;
+  /* border-radius: .5em; */
+  color: gray;
+}
+
+
+.extra>.title {
+  margin-right: .5em;
+}
+
+.dates {
+  margin-top: 2em;
 }
