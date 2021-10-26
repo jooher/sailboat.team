@@ -3,11 +3,11 @@
 .offer{padding: 1rem;background: ghostwhite;border-bottom: ;transition: background-color 2s ease-out;}
 .offer.focused{background-color: white;box-shadow: 0 2px 6px rgb(0 0 0 / 10%);margin: 6px 0;box-sizing: border-box;}
 
-.brief{position:relative;overflow: hidden;white-space: nowrap;background: inherit;}
+.brief{position:relative;overflow: hidden;white-space: nowrap;/* background: inherit; */}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
 .brief>.subtitle{color: lightcoral;font-style: italic;font-family:cursive;display: inline;}
 .brief>.note{color:gray; font-size:.9em}
-.brief>.price{position:absolute;background: inherit;padding: 0 .2em;right:0;top: 0;}
+.brief>.price{position:absolute;/* background: inherit; */padding: 0 .2em;right:0;/* top: 0; */}
 .brief>.price::before {color: lightgray;font-size: .8em;}
 
 
@@ -21,7 +21,6 @@
 attic {
   background: darkslategray;
   color: white;
-  /* height: 4em; */
 }
 
 .specs>span {
@@ -48,10 +47,6 @@ img.flag {
   position: absolute;
   left: -24px;
   top: 6px;
-}
-
-.focused>.brief>.subtitle, etage>.brief>.subtitle {
-  display: block;
 }
 
 .specs>.sleeps {
@@ -143,9 +138,10 @@ section.dates {
   margin-top: 2em;
 }
 
-.week>.dates::after {/* content: " >"; */margin-left: .25em;}
-
 /*
+.week>.dates::after {content: " —"; margin-left: .25em;}
+
+
 @media(min-width:480px){
 	.dates {display: flex;margin-top: 2em;}
 	.weeks{ flex: 1;}
