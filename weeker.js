@@ -178,9 +178,9 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 					,'feedback'.d()
 				)
 				
-				,'A.order'.d("!! ")
 				,'BUTTON.order `See charter details'.ui("$book=$")
 */
+				,'A.order target=_blank'.d("!! (`https://www.boataround.com/boat/ ..slug)concat@href")
 			)
 		).a("!? $?@focused")
 	),

@@ -24,7 +24,7 @@
 attic {
   background: darkslategray;
   color: white;
-  height: 4em;
+  /* height: 4em; */
 }
 
 .specs>span {
@@ -168,6 +168,7 @@ etage>.brief {
 .extras {
   margin-top: 2.4em;
   position:relative;
+  font-size: .8em;
 }
 
 .extras::before{
@@ -180,19 +181,32 @@ etage>.brief {
   margin: 2px 2px;
   padding: .2em.5em;
   background: lavender;
-  /* border-radius: .5em; */
+  border-radius: .5em;
   color: gray;
+  text-align: center;
 }
 
 
 .extra>.title {
-  margin-right: .5em;
+  /* margin-right: .5em; */
+  display: block;
 }
 
 .dates {
-  margin-top: 2em;
+  margin-top: 1.4em;
 }
 
 section.intro {
   text-align: center;
+}
+
+a.order {
+  display: block;
+  text-align: right;
+  margin-top: 1em;
+}
+
+select.shipclass {
+  display: block;
+  width: 100%;
 }
