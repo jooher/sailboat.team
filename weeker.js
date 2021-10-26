@@ -84,12 +84,12 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 		,'ETAGE'.d(""
 		
-			,'SECTION.map'
+			,'SECTION.map#up'
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
 				.e('marker',"$bay=#.value")
 				
 			,'ATTIC'.d("? $bay"
-				,'H2'.d("! $bay")
+				,'H2'.d("! $bay").ui("focus `up")
 				,'SELECT.shipclass'.d("*@ shipclasses"
 					,'OPTION'.d("!! .title@ .value")
 				).ui("$shipclass=#:value")
@@ -102,7 +102,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		
 	).a("focus $book:!")
 	
-	,'PAGE.book'.d("" //
+/*	,'PAGE.book'.d("" //
 	
 		,'ETAGE'.d("? $book:!; ! html.book") //html.info
 	
@@ -123,6 +123,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		)
 		
 	).a("focus $book")
+*/
 	
 )
 
@@ -153,6 +154,10 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 					,'IMG'.d("!! .src:ba.pic")
 				)
 				
+				,'extras'.d("? .extras:??; *@ .extras"
+					,'extra'.d("! (.title .week .day)spans")
+				)
+				
 				,'dates'.d("$month=.."
 				
 					,'SELECT'.d("*@mo .mo=:mw.months"
@@ -167,19 +172,15 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 						)
 					)
 				)
-				
-				,'extras'.d("*@ .extras"
-					,'extra'.d("! (.title .week .day)spans")
-				)
 /*				
 				,'more'.d(""
 					,'checklists'.d()
 					,'feedback'.d()
 				)
-*/				
+				
 				,'A.order'.d("!! ")
 				,'BUTTON.order `See charter details'.ui("$book=$")
-
+*/
 			)
 		).a("!? $?@focused")
 	),
@@ -203,7 +204,12 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		},
 		
 		focus	:(value,alias,node)=>{
-				if(value)scrollfocus(node,alias);
+				if(alias)
+					value&&scrollfocus(node,alias);
+				else{
+					const a=document.getElementById(value);
+					a&&a.scrollIntoView();
+				}
 			},
 		
 		geomap : (value,alias,node) => setTimeout( ()=> geomap(node,value), 10 ) // : ()=>{}

@@ -58,7 +58,7 @@ action{
 input, button {outline:none}
 
 h1{font:normal 60px Roboto,sans-serif}
-h2{font: normal 1.5rem sans-serif;/* font: bold 1.5em Roboto,sans-serif; */}
+h2{font: normal 1.5rem sans-serif;margin-top: 2em;/* font: bold 1.5em Roboto,sans-serif; */}
 h3{font: normal 21px Roboto,sans-serif;margin-top: 2em;}
 h4{font:normal 27px Roboto,sans-serif}
 h5{font:normal 24px Roboto,sans-serif}
@@ -73,7 +73,7 @@ html,body {
 	height: 100%;
 	padding: 0;
 	margin: 0;
-	scroll-behavior: smooth;
+	/* scroll-behavior: smooth; */
 }
 
 @media(max-width: 38rem){/* orientation:portrait */
@@ -107,6 +107,7 @@ etage {
     position: relative;
     flex-direction: column;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 

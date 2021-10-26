@@ -192,3 +192,7 @@ etage>.brief {
 .dates {
   margin-top: 2em;
 }
+
+section.intro {
+  text-align: center;
+}
