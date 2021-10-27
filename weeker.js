@@ -78,13 +78,13 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 //export default
 
-'APP'.d("$shipclass= $week=`3 $bay= $book= $month=:date"
+'APP'.d("$shipclass= $week=`3 $bay= $book= $month=:date" //`Crimea
 
 	,'PAGE.area'.d("a!"//
 	
 		,'ETAGE'.d(""
-		
-			,'SECTION.map#up'
+/*		
+*/			,'SECTION.map#up'
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
 				.e('marker',"$bay=#.value")
 				

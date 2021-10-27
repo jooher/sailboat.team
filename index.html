@@ -8,6 +8,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0" />
 	<meta name="theme-color" content="blue" />
 	
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/manifest.json"/>
+	
 	<style>
 		[data-dap=false]{display:none !important}
 		[ui=click]{cursor:pointer;}
@@ -21,17 +25,16 @@
 	
 	<link rel="shortcut icon" href="icon128.png">
 	
-	<link rel="manifest" href="manifest.json"/>
 	
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBALH6vLZir1LYeGlRryY66aKjo3Kji90o&callback=initMap&v=weekly"></script>
+	<!-- script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBALH6vLZir1LYeGlRryY66aKjo3Kji90o&callback=initMap&v=weekly"></script -->
 	
 	
 </head>
 
 <body>
 
-<script type="module" src="weeker.js"></script>
-	
+<!--script type="module" src="weeker.js"></script-->
+
 <section id="data">
 
 <article id="intro">
@@ -122,6 +125,9 @@
 </section>
 	
 <script>
+
+	//document.body.requestFullscreen();
+	//window.scrollTo(0,1);
 
 	if(navigator.serviceWorker)
 		window.addEventListener('load', e=>
