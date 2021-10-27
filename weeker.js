@@ -95,7 +95,14 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				).ui("$shipclass=#:value")
 			)
 			
-			,'SECTION.ships'.d("? $bay; Ships( ( `//api.boataround.com/v1/search? $bay:ba.slug@destinations `& $shipclass@)uri:query,ba.boats@ships )")//db@ `ships? $bay $week
+			,'SECTION.bay'.d("? $bay; $page=`1 $more=:!"
+			
+				,'list'.d("a!")
+				.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
+				
+				,'more'.d('? $more').ui("? $more=(.ships.length `18)eq; $page=$page:++")
+			)
+			
 			
 			,'SECTION.intro'.d("? $bay:!; ! html.intro html.book")
 		)		

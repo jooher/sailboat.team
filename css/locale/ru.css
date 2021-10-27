@@ -15,3 +15,5 @@ a.xboatdetails::before{content: "Подробнее об этой лодке"}
 .extra>.day:not(:empty)::after {content: " €/day";}
 
 a.order::before{content: "Забронировать эту лодку >>>";}
+
+.more::before {content: "Еще...";}
