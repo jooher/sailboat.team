@@ -100,7 +100,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				,'list'.d("a!")
 				.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
 				
-				,'more'.d('? $more').ui("? $more=(.ships.length `18)eq; $page=$page:++")
+				,'more'.d('? $more').ui("$more=(.ships.length `18)eq; $page=$page:++")
 			)
 			
 			
