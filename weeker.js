@@ -11,9 +11,9 @@ import Persist from "/./stuff/persist.js";
 import Starbar from "/./stuff/bricks/starbar.js";
 */
 
-//import gmap from "./jsm/geomap.js";
+import gmap from "./jsm/geomap.js";
 
-const geomap = {},//gmap({ zoom: 4, center: {lat:50,lng:24}, disableDefaultUI: true, gestureHandling:'greedy' }),
+const geomap = gmap({ zoom: 4, center: {lat:50,lng:24}, disableDefaultUI: true, gestureHandling:'greedy' }),//{},//
 	dap = window["https://dap.js.org/"],
 	grab	= src	=> [...(src.parentNode.removeChild(src)).children].reduce((a,n)=>{if(n.id)a[n.id]=src.removeChild(n); return a},{}),
 	html	= grab(document.getElementById("data"));
@@ -90,10 +90,10 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		,'ETAGE'.d("? $bay"
 			
 /*		
-			,'SECTION.map#up'
+*/			,'SECTION.map#up'
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
 				.e('marker',"$bay=#.value")
-*/				
+				
 			
 			,'ATTIC'.d(""
 				,'H2'.d("! $bay").ui("focus `up")

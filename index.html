@@ -6,29 +6,27 @@
 	<meta charset="UTF-8">
 	<meta name="theme-color" content="blue" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Charter boat booking">
+	<meta content="yes" name="mobile-web-app-capable">
+	<meta content="yes" name="apple-mobile-web-app-capable">
 	
-<meta content="yes" name="mobile-web-app-capable">
-<meta content="yes" name="apple-mobile-web-app-capable">
-<link rel="manifest" href="manifest.json"/>
-<link rel="shortcut icon" href="icon128.png">
-<link rel="apple-touch-icon" href="icon192.png">
-
-<meta name="description" content="Charter boat booking">
-
-	
-	<style>
-		[data-dap=false]{display:none !important}
-		[ui=click]{cursor:pointer;}
-		
-		section.map{height:400px;}
-	</style>
+	<link rel="manifest" href="manifest.json"/>
+	<link rel="shortcut icon" href="icon128.png">
+	<link rel="apple-touch-icon" href="icon192.png">
 	
 	<link rel="stylesheet" href="css/material.css"/> <!-- https://dap.js.org/stuff/ -->
 	<link rel="stylesheet" href="css/app.css"/>
 	<link rel="stylesheet" href="css/locale/ru.css"/>
+
+	<style>
+		[data-dap=false]{display:none !important}
+		[ui=click]{cursor:pointer;}
+		
+	</style>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBALH6vLZir1LYeGlRryY66aKjo3Kji90o&callback=initMap&v=weekly"></script>
 	
 <!--	
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBALH6vLZir1LYeGlRryY66aKjo3Kji90o&callback=initMap&v=weekly"></script>
 -->	
 	
 </head>
@@ -77,7 +75,6 @@ Lefkada, Greece
 	<h3>Как и где брать лодку?</h3>
 	<p>Тут надо что-то написать полезное</p>
 </article>
-
 
 
 <article id ="help-text">
@@ -132,11 +129,6 @@ Lefkada, Greece
 50	category=power-catamaran	Моторный катамаран
 60	category=gulet	Гулет
 </div>
-
-
-<article id="bookat">
-<p>Эту лодку можно забронировать!</p>
-</article>
 
 </section>
 	
