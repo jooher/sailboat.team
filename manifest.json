@@ -22,6 +22,11 @@
 	"src": "./icon512.png",
 	"sizes": "512x512",
 	"type": "image/png",
+	"purpose": "any"
+	}, {
+	"src": "./icon640.png",
+	"sizes": "640x640",
+	"type": "image/png",
 	"purpose": "any maskable"
 }]
 }
