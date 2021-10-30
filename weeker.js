@@ -11,9 +11,9 @@ import Persist from "/./stuff/persist.js";
 import Starbar from "/./stuff/bricks/starbar.js";
 */
 
-import gmap from "./jsm/geomap.js";
+//import gmap from "./jsm/geomap.js";
 
-const geomap = gmap({ zoom: 4, center: {lat:50,lng:24}, disableDefaultUI: true, gestureHandling:'greedy' }),
+const geomap = {},//gmap({ zoom: 4, center: {lat:50,lng:24}, disableDefaultUI: true, gestureHandling:'greedy' }),
 	dap = window["https://dap.js.org/"],
 	grab	= src	=> [...(src.parentNode.removeChild(src)).children].reduce((a,n)=>{if(n.id)a[n.id]=src.removeChild(n); return a},{}),
 	dict	= grab(document.getElementById("data"));
@@ -78,16 +78,16 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 //export default
 
-'APP'.d("$shipclass= $week=`3 $bay= $book= $month=:date" //`Crimea
+'APP'.d("$shipclass= $week=`3 $bay=`Crimea $book= $month=:date" //`Crimea
 
 	,'PAGE.area'.d("a!"//
 	
 		,'ETAGE'.d(""
 /*		
-*/			,'SECTION.map#up'
+			,'SECTION.map#up'
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
 				.e('marker',"$bay=#.value")
-				
+*/				
 			,'ATTIC'.d("? $bay"
 				,'H2'.d("! $bay").ui("focus `up")
 				,'SELECT.shipclass'.d("*@ shipclasses"
