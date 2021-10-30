@@ -16,7 +16,7 @@ import Starbar from "/./stuff/bricks/starbar.js";
 const geomap = {},//gmap({ zoom: 4, center: {lat:50,lng:24}, disableDefaultUI: true, gestureHandling:'greedy' }),
 	dap = window["https://dap.js.org/"],
 	grab	= src	=> [...(src.parentNode.removeChild(src)).children].reduce((a,n)=>{if(n.id)a[n.id]=src.removeChild(n); return a},{}),
-	dict	= grab(document.getElementById("data"));
+	html	= grab(document.getElementById("data"));
 	
 const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // Tab-separated values
 
@@ -78,33 +78,35 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 //export default
 
-'APP'.d("$shipclass= $week=`3 $bay=`Crimea $book= $month=:date" //`Crimea
+'APP'.d("$shipclass= $week=`3 $bay= $book= $month=:date" //`Crimea
 
 	,'PAGE.area'.d("a!"//
 	
-		,'ETAGE'.d(""
+		,'ETAGE'.d("? $bay:!"
+			,'SELECT.destination'.d("*@ populardest; ! Option").ui("$bay=#:value")
+			,'SECTION.intro'.d("! html.intro html.book")
+		)
+	
+		,'ETAGE'.d("? $bay"
+			
 /*		
 			,'SECTION.map#up'
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
 				.e('marker',"$bay=#.value")
 */				
-			,'ATTIC'.d("? $bay"
+			
+			,'ATTIC'.d(""
 				,'H2'.d("! $bay").ui("focus `up")
-				,'SELECT.shipclass'.d("*@ shipclasses"
-					,'OPTION'.d("!! .title@ .value")
-				).ui("$shipclass=#:value")
+				,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
 			)
 			
-			,'SECTION.bay'.d("? $bay; $page=`1 $more=:!"
+			,'SECTION.bay'.d("$page=`1 $more=:!"
 			
 				,'list'.d("a!")
 				.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
 				
 				,'more'.d('? $more').ui("$more=(.ships.length `18)eq; $page=$page:++")
 			)
-			
-			
-			,'SECTION.intro'.d("? $bay:!; ! html.intro html.book")
 		)		
 		
 	).a("focus $book:!")
@@ -134,13 +136,17 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 )
 
-.DICT({
+.DICT({ html,
 	
 	db: "//orders.saxmute.one/weeker/gate.php?",
 	
-	html: dict,
+	shipclasses: options(html.shipclasses.textContent.replace(/\+/g,"&")),
+	populardest: html.populardest.textContent.split("\n")
+				.map(str=>str.split(", "))
+				.map(a=>({value:a[0],title:a.join(", ")})),
 	
-	shipclasses: options(dict.shipclasses.textContent.replace(/\+/g,"&")),
+	Option
+	:'OPTION'.d("!! .title@ .value"),
 	
 	Flag
 	:'IMG.flag'.d("!! (`chrome/flags/ .flag@ `.png)uri@src"),

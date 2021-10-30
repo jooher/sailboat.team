@@ -10,15 +10,170 @@
 
 <script type="module">
 
-import g from "./boataround.js";
+//import g from "./boataround.js";
 
-g.test();
+//g.test();
 
 //g.getCountries();
 
 //g.getDestinations();
 
-g.tsvDestinations();
+//g.tsvDestinations();
+
+var c=[
+		{
+			"total": 4787,
+			"icon": "flag-icon flag-icon-hr",
+			"name": "Croatia",
+			"meta": "",
+			"type": "country",
+			"coordinates": [
+				15.059924,
+				44.814295
+			],
+			"id": "croatia",
+			"popularity": 10,
+			"label": "country",
+			"expression": "Croatia"
+		},
+		{
+			"total": 3193,
+			"icon": "flag-icon flag-icon-gr",
+			"name": "Greece",
+			"meta": "",
+			"type": "country",
+			"coordinates": [
+				21.824312,
+				39.074208
+			],
+			"id": "greece",
+			"popularity": 9,
+			"label": "country",
+			"expression": "Greece"
+		},
+		{
+			"total": 978,
+			"icon": "flag-icon flag-icon-tr",
+			"name": "Turkey",
+			"meta": "",
+			"type": "country",
+			"coordinates": [
+				35.243322,
+				38.963745
+			],
+			"id": "turkey",
+			"popularity": 8,
+			"label": "country",
+			"expression": "Turkey"
+		},
+		{
+			"total": 1833,
+			"icon": "flag-icon flag-icon-it",
+			"name": "Italy",
+			"meta": "",
+			"type": "country",
+			"coordinates": [
+				12.743161,
+				42.271543
+			],
+			"id": "italy",
+			"popularity": 7,
+			"label": "country",
+			"expression": "Italy"
+		},
+		{
+			"total": 1577,
+			"icon": "flag-icon flag-icon-hr",
+			"name": "Split",
+			"meta": "Croatia",
+			"type": "region",
+			"coordinates": [
+				16.797936,
+				43.504398
+			],
+			"id": "split",
+			"popularity": 6,
+			"label": "region",
+			"expression": "Split"
+		},
+		{
+			"total": 1314,
+			"icon": "flag-icon flag-icon-gr",
+			"name": "Athens",
+			"meta": "Greece",
+			"type": "region",
+			"coordinates": [
+				23.727539,
+				37.98381
+			],
+			"id": "athens",
+			"popularity": 5,
+			"label": "region",
+			"expression": "Athens"
+		},
+		{
+			"total": 1415,
+			"icon": "flag-icon flag-icon-es",
+			"name": "Spain",
+			"meta": "",
+			"type": "country",
+			"coordinates": [
+				-3.74922,
+				40.463667
+			],
+			"id": "spain",
+			"popularity": 4,
+			"label": "country",
+			"expression": "Spain"
+		},
+		{
+			"total": 460,
+			"icon": "flag-icon flag-icon-es",
+			"name": "Mallorca",
+			"meta": "Spain",
+			"type": "region",
+			"coordinates": [
+				2.940667,
+				39.589514
+			],
+			"id": "mallorca",
+			"popularity": 3,
+			"label": "region",
+			"expression": "Mallorca"
+		},
+		{
+			"total": 1165,
+			"icon": "flag-icon flag-icon-pr",
+			"name": "Caribbean",
+			"meta": "",
+			"type": "country",
+			"coordinates": [
+				-77.514316,
+				14.961441
+			],
+			"id": "caribbean",
+			"popularity": 2,
+			"label": "country",
+			"expression": "Caribbean"
+		},
+		{
+			"total": 658,
+			"icon": "flag-icon flag-icon-gr",
+			"name": "Lefkada",
+			"meta": "Greece",
+			"type": "region",
+			"coordinates": [
+				20.647596,
+				38.729148
+			],
+			"id": "lefkada",
+			"popularity": 1,
+			"label": "region",
+			"expression": "Lefkada"
+		}
+	].map(d=> d.meta? d.name+", "+d.meta : d.name ).join("\n");
+	
+console.log(c);
 
 </script>
 
