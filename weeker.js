@@ -82,31 +82,34 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 
 	,'PAGE.area'.d("a!"//
 	
-		,'ETAGE'.d("? $bay:!"
-			,'SELECT.destination'.d("*@ populardest; ! Option").ui("$bay=#:value")
-			,'SECTION.intro'.d("! html.intro html.book")
-		)
-	
-		,'ETAGE'.d("? $bay"
-			
-/*		
-*/			,'SECTION.map#up'
+		,'ETAGE'.d(""
+		
+			,'SECTION.map#up'
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
 				.e('marker',"$bay=#.value")
 				
 			
-			,'ATTIC'.d(""
-				,'H2'.d("! $bay").ui("focus `up")
-				,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
-			)
+			,'SECTION'.d("? $bay"
 			
-			,'SECTION.bay'.d("$page=`1 $more=:!"
-			
-				,'list'.d("a!")
-				.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
+				,'ATTIC'.d(""
+					,'H2'.d("! $bay").ui("focus `up")
+					,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
+				)
 				
-				,'more'.d('? $more').ui("$more=(.ships.length `18)eq; $page=$page:++")
+				,'SECTION.bay'.d("$page=`1 $more=:!"
+				
+					,'list'.d("a!")
+					.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
+					
+					,'more'.d('? $more').ui("$more=(.ships.length `18)eq; $page=$page:++")
+				)
 			)
+			
+			,'SECTION'.d("? $bay:!"
+				,'SELECT.destination'.d("*@ populardest; ! Option").ui("$bay=#:value")
+				,'SECTION.intro'.d("! html.intro html.book")
+			)
+		
 		)		
 		
 	).a("focus $book:!")
