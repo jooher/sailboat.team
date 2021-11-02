@@ -1,8 +1,8 @@
 section.map	{height:400px;}
 section.bay {background: ghostwhite;}
 
-.offer{padding: 1rem;background: ghostwhite;border-bottom: ;transition: background-color 2s ease-out;}
-.offer.focused{background-color: white;box-shadow: 0 2px 6px rgb(0 0 0 / 10%);margin: 6px 0;box-sizing: border-box;}
+.offer{padding: 1rem;/* background: ghostwhite; */border-bottom: ;transition: background-color 2s ease-out;}
+.offer.focused{background-color: white;box-shadow: 0 2px 4px rgb(0 0 0 / 25%);margin: 6px 0;box-sizing: border-box;}
 
 .brief{position:relative;overflow: hidden;white-space: nowrap;/* background: inherit; */}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
@@ -196,8 +196,9 @@ a.order {
 }
 
 select.shipclass {
-  display: block;
-  width: 100%;
+  /* display: block; */
+  /* width: 100%; */
+  flex: 1;
 }
 
 .more {
@@ -211,4 +212,17 @@ select.shipclass {
 select.destination {
   display: block;
   margin: 1em auto;
+}
+
+attic>.filter {
+  display: flex;
+  margin: -.5rem;
+}
+
+attic>.filter>select {
+  margin: .5em;
+}
+
+.bay {
+  background: ghostwhite;
 }

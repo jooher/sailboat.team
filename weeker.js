@@ -80,7 +80,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 
 'APP'.d("$shipclass= $week=`3 $bay= $book= $month=:date" //`Crimea
 
-	,'PAGE.area'.d("a!"//
+	,'PAGE.area'.d(""//"a!"//
 	
 		,'ETAGE'.d(""
 		
@@ -93,7 +93,12 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 			
 				,'ATTIC'.d(""
 					,'H2'.d("! $bay").ui("focus `up")
-					,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
+					,'filter'.d(""
+						,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
+						,'SELECT'.d("*@mo .mo=:mw.months"
+							,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")
+						).ui("$month=#:value; ?")
+					)
 				)
 				
 				,'bay'.d("$shipclass $page=`1 $more=:!"
@@ -112,7 +117,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		
 		)		
 		
-	).a("focus $book:!")
+	)//.a("focus $book:!")
 	
 /*	,'PAGE.book'.d("" //
 	
@@ -174,25 +179,18 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 					,'extra'.d("! (.title .week .day)spans")
 				)
 				
-				,'dates'.d("$month=.."
-				
-					,'SELECT'.d("*@mo .mo=:mw.months"
-						,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")//!? (.value $month)eq@selected
-					).ui("$month=#:value; ?")
-
-					,'weeks'.d("$boat=$; *@ $month:saturdays" //? $book; 
-						,'week'.d(""
-							,'dates'.d("!! .start:hum@")
-							,'price'.d("! (`//api.boataround.com/v1/price/ ...slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
-							.ui("$book=( $boat $@week )")
-						)
+				,'weeks'.d("$boat=$; *@ $month:saturdays" //? $book; 
+					,'week'.d(""
+						,'dates'.d("!! .start:hum@")
+						,'price'.d("! (`//api.boataround.com/v1/price/ ...slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
+						.ui("$book=( $boat $@week )")
 					)
 				)
 /*				
 				,'more'.d(""
 					,'checklists'.d()
 					,'feedback'.d()
-				)
+				)focused
 				
 				,'BUTTON.order `See charter details'.ui("$book=$")
 */
