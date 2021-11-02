@@ -13,6 +13,8 @@ a.xboatdetails::before{content: "Подробнее об этой лодке"}
 .extras::before{/* content: "Дополнительные опции"; */}
 .extra>.week:not(:empty)::after {content: " €/week";}
 .extra>.day:not(:empty)::after {content: " €/day";}
+.extra>.rental:not(:empty)::after {content: " €";}
+.extra>.person:not(:empty)::after {content: " €/person";}
 
 a.order::before{content: "Забронировать эту лодку >>>";}
 

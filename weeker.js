@@ -25,15 +25,17 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	wrap = (tag,cls,value) => {
 		const el = document.createElement(tag);
 		if(cls)el.classList.add(cls);
-		if(value!==null)el.textContent = value;
+		if(value!=null)el.textContent = value;
 		return el;
 	},
 	
 	wraps = tag => (obj,tags) => {
 		if(Array.isArray(obj))
-			return obj.map( (value,i) => wrap(tag,tags[i],value) ).reverse();
+			return obj.map( (value,i) => value!=null ? wrap(tag,tags[i],value) : null ).reverse();
 		const els = [];
-		for(const c in obj)els.push(wrap(tag,c,obj[c]));
+		for(const c in obj)
+			if(obj[c]!=null)
+				els.push(wrap(tag,c,obj[c]));
 		return els;
 	},
 	
@@ -155,7 +157,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				)
 				
 				,'extras'.d("? .extras:??; *@ .extras"
-					,'extra'.d("! (.title .week .day)spans")
+					,'extra'.d("! (.title .week .day .rental .person)spans")
 				)
 				
 				,'weeks'.d("$boat=$; *@ $month:saturdays" //? $book; 
