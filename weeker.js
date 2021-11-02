@@ -98,9 +98,9 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				)
 			)
 			
-			,'SECTION'.d("? $bay; $page=`1"
+			,'SECTION'.d("? $bay; $shipclass $page=`1"
 			
-				,'bay'.d("$shipclass; a!")
+				,'bay'.d("a!")
 				.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
 				
 				,'more'.d('? $page').ui("$page=( (.ships.length `18)eq $page:++ :? )?!")
@@ -144,7 +144,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 	db: "//orders.saxmute.one/weeker/gate.php?",
 	
-	shipclasses: options(html.shipclasses.textContent.replace(/\+/g,"&")),
+	shipclasses: options(html.shipclasses.textContent.replace(/;/g,"&")),
 	populardest: html.populardest.textContent.split("\n")
 				.map(str=>str.split(", "))
 				.map(a=>({value:a[0],title:a.join(", ")})),
