@@ -203,6 +203,7 @@ attic>.filter>select {
   border: none;
   padding: 0;
   border-radius: 4px;
+  background: white;
 }
 
 select.shipclass {
