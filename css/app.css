@@ -191,7 +191,7 @@ section.intro {
 
 a.order {
   display: block;
-  text-align: right;
+  text-align: center;
   margin-top: 1em;
 }
 
@@ -216,13 +216,20 @@ select.destination {
 
 attic>.filter {
   display: flex;
-  margin: -.5rem;
+  /* margin: -.5rem; */
 }
 
 attic>.filter>select {
-  margin: .5em;
+  margin: 2px;
+  font-size: .9em;
+  /* background: none; */
+  /* color: inherit; */
+  border: none;
+  /* border-bottom: 1px solid; */
+  padding: 0;
 }
 
 .bay {
   background: ghostwhite;
+  padding-bottom: 1px;
 }
