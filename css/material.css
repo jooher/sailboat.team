@@ -196,7 +196,7 @@ roof>.title{font-size: 1.25em; margin: .5em 0;}
 
 
 attic {
-    padding: .5rem 1rem;
+    padding: .5rem;
     margin: 0;
     /* height: 3rem; */
     z-index: 1;
