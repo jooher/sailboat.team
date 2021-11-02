@@ -88,30 +88,26 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
 				.e('marker',"$bay=#.value")
 				
-			
-			,'SECTION'.d("? $bay"
-			
-				,'ATTIC'.d(""
-					,'H2'.d("! $bay").ui("focus `up")
-					,'filter'.d(""
-						,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
-						,'SELECT'.d("*@mo .mo=:mw.months"
-							,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")
-						).ui("$month=#:value; ?")
-					)
-				)
-				
-				,'bay'.d("$shipclass $page=`1 $more=:!"
-				
-					,'list'.d("a!")
-					.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
-					
-					,'more'.d('? $more').ui("$more=(.ships.length `18)eq; $page=$page:++")
+			,'ATTIC'.d(""
+				,'H2'.d("! $bay").ui("focus `up")
+				,'filter'.d(""
+					,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
+					,'SELECT'.d("*@mo .mo=:mw.months"
+						,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")
+					).ui("$month=#:value; ?")
 				)
 			)
 			
+			,'SECTION'.d("? $bay; $page=`1"
+			
+				,'bay'.d("$shipclass; a!")
+				.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
+				
+				,'more'.d('? $page').ui("$page=( (.ships.length `18)eq $page:++ :? )?!")
+			)
+			
 			,'SECTION'.d("? $bay:!"
-				,'SELECT.destination'.d("*@ populardest; ! Option").ui("$bay=#:value")
+				//,'SELECT.destination'.d("*@ populardest; ! Option").ui("$bay=#:value")
 				,'intro'.d("! html.intro html.book")
 			)
 		
