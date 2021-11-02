@@ -58,8 +58,8 @@ action{
 input, button {outline:none}
 
 h1{font:normal 60px Roboto,sans-serif}
-h2{font: normal 1.25rem sans-serif;margin-top: 2em;/* font: bold 1.5em Roboto,sans-serif; */}
-h3{font: normal 21px Roboto,sans-serif;margin-top: 2em;}
+h2{/* font: normal 1.25rem sans-serif; */margin-top: 2em;/* font: bold 1.5em Roboto,sans-serif; */}
+h3{/* font: normal 21px Roboto,sans-serif; */margin-top: 2em;}
 h4{font:normal 27px Roboto,sans-serif}
 h5{font:normal 24px Roboto,sans-serif}
 h6{font:normal 20px Roboto,sans-serif}
@@ -247,4 +247,10 @@ article {
 attic>h2 {
   /* margin-top: 0; */
   margin: .5rem 0;
+}
+
+attic>.title {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  /* margin-bottom: .25em; */
 }

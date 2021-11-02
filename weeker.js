@@ -13,7 +13,7 @@ import Starbar from "/./stuff/bricks/starbar.js";
 
 import gmap from "./jsm/geomap.js";
 
-const geomap = gmap({ zoom: 4, center: {lat:50,lng:24}, disableDefaultUI: true, gestureHandling:'greedy' }),//{},//
+const geomap = gmap({ zoom: 4, center: {lat:50,lng:17}, disableDefaultUI: true, gestureHandling:'greedy' }),//{},//
 	dap = window["https://dap.js.org/"],
 	grab	= src	=> [...(src.parentNode.removeChild(src)).children].reduce((a,n)=>{if(n.id)a[n.id]=src.removeChild(n); return a},{}),
 	html	= grab(document.getElementById("data"));
@@ -89,7 +89,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				.e('marker',"$bay=#.value")
 				
 			,'ATTIC'.d(""
-				,'H2'.d("! $bay").ui("focus `up")
+				,'title'.d("! $bay").ui("focus `up")
 				,'filter'.d(""
 					,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
 					,'SELECT'.d("*@mo .mo=:mw.months"
@@ -103,39 +103,22 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				,'bay'.d("a!")
 				.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
 				
-				,'more'.d('? $page').ui("$page=( (.ships.length `18)eq $page:++ :? )?!")
+				,'more'.d('? $page')
+				.ui("$page=( (.ships.length `18)eq $page:++ :? )?!")
 			)
 			
-			,'SECTION'.d("? $bay:!"
+			,'SECTION'.d("? $bay:!; "
 				//,'SELECT.destination'.d("*@ populardest; ! Option").ui("$bay=#:value")
 				,'intro'.d("! html.intro html.book")
 			)
 		
 		)		
 		
-	)//.a("focus $book:!")
+	)
 	
-/*	,'PAGE.book'.d("" //
-	
-		,'ETAGE'.d("? $book:!; ! html.book") //html.info
-	
-		//,'ATTIC.brief'.d("? $book; ! html.bookat")
-		
-		,'ETAGE'.d("*@ $book"
-		
-			,'brief.focused'.d("! (.boat.make@title .boat.name@subtitle (.week.start:hum `— .week.end:hum)spaced )divs")
-		
-			,'A.xboatdetails target=boataround'.d("!! (`https://www.boataround.com/ru/boat/ .boat.slug)concat@href")
-						
-			//www.boataround.com/enter-your-details/bavaria-44-fanourios?checkIn=2021-11-20&checkOut=2021-11-27
-
-			,'FORM target=boataround _action=/submit action=https://www.boataround.com/final-details method=post'
-				.d("! ($book._id@boat_id .week.start:iso@checkInDate .week.end:iso@checkOutDate)hiddens (`name `surname @email`email @tel`phone-number @submit)inputs")
-				
-			,'SECTION.info'.d("! html.book")
-		)
-		
-	).a("focus $book")
+/*
+	,'FORM target=boataround _action=/submit action=https://www.boataround.com/final-details method=post'
+	.d("! ($book._id@boat_id .week.start:iso@checkInDate .week.end:iso@checkOutDate)hiddens (`name `surname @email`email @tel`phone-number @submit)inputs")
 */
 	
 )
