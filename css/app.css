@@ -1,14 +1,14 @@
 section.map	{height:400px;}
 section.bay {background: ghostwhite;}
 
-.offer{padding: .5rem;/* background: ghostwhite; */border-bottom: ;transition: background-color 2s ease-out;}
+.offer{padding: .5rem; border-bottom: ;transition: background-color 2s ease-out;}
 .offer.focused{background-color: white;box-shadow: 0 2px 4px rgb(0 0 0 / 25%);margin: 6px 0;box-sizing: border-box;}
 
-.brief{position:relative;overflow: hidden;white-space: nowrap;/* background: inherit; */}
+.brief{position:relative;overflow: hidden;white-space: nowrap;}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
 .brief>.subtitle{color: lightcoral;font-style: italic;font-family:cursive;display: inline;}
 .brief>.note{color:gray; font-size:.9em}
-.brief>.price{position:absolute;/* background: inherit; */padding: 0 .2em;right:0;/* top: 0; */}
+.brief>.price{position:absolute;padding: 0 .2em;right:0;}
 .brief>.price::before {color: lightgray;font-size: .8em;}
 
 
@@ -38,7 +38,6 @@ attic {
 
 .specs {
   font-size: .9em;
-  /* margin-top: .5em; */
 }
 
 .price:not(:empty)::after {content: " €";}
@@ -140,23 +139,12 @@ section.dates {
   margin-top: 2em;
 }
 
-/*
-.week>.dates::after {content: " —"; margin-left: .25em;}
-
-
-@media(min-width:480px){
-	.dates {display: flex;margin-top: 2em;}
-	.weeks{ flex: 1;}
-}
-*/
-
 etage>.brief {
   margin: 1em;
 }
 
 
 .extras {
-  /* margin-top: 2.4em; */
   position:relative;
   font-size: .8em;
 }
@@ -172,13 +160,11 @@ etage>.brief {
   padding: .2em.5em;
   background: bisque;
   border-radius: .5em;
-  /* color: gray; */
   text-align: center;
 }
 
 
 .extra>.title {
-  /* margin-right: .5em; */
   display: block;
 }
 
@@ -196,18 +182,10 @@ a.order {
   margin-top: 1em;
 }
 
-select.shipclass {
-  /* display: block; */
-  /* width: 100%; */
-  flex: 1;
-}
-
 .more {
   text-align: center;
   padding: 1em;
   background: lightskyblue;
-  /* margin: 1em 2em; */
-  /* box-shadow: 0 2px 4px rgb(0 0 0 / 20%); */
 }
 
 select.destination {
@@ -217,18 +195,18 @@ select.destination {
 
 attic>.filter {
   display: flex;
-  /* margin: -.5rem; */
 }
 
 attic>.filter>select {
   margin: 2px;
   font-size: .9em;
-  /* background: none; */
-  /* color: inherit; */
   border: none;
-  /* border-bottom: 1px solid; */
   padding: 0;
   border-radius: 4px;
+}
+
+select.shipclass {
+  flex: 1;
 }
 
 .bay {
