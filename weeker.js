@@ -1,6 +1,6 @@
 import "./0.5.js";//"https://dap.js.org/0.5.js";
-import boataround from "./grab/boataround.js";
 import scrollfocus from "./jsm/scrollfocus.js";	
+import wraps from "./jsm/wraps.js";
 
 import mwx from "./jsm/weeks.js";
 const mw = mwx("ru",Date.now());
@@ -9,7 +9,9 @@ const mw = mwx("ru",Date.now());
 import Await from "/./stuff/await.js";
 import Persist from "/./stuff/persist.js";
 import Starbar from "/./stuff/bricks/starbar.js";
-*/
+*/	
+
+import boataround from "./grab/boataround.js";
 
 import gmap from "./jsm/geomap.js";
 
@@ -22,33 +24,6 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 
 	options = txt => tsv(txt).map( ([id,value,title])=>({value,title}) ),
 	
-	wrap = (tag,cls,value) => {
-		const el = document.createElement(tag);
-		if(cls)el.classList.add(cls);
-		if(value!=null)el.textContent = value;
-		return el;
-	},
-	
-	wraps = tag => (obj,tags) => {
-		if(Array.isArray(obj))
-			return obj.map( (value,i) => value!=null ? wrap(tag,tags[i],value) : null ).reverse();
-		const els = [];
-		for(const c in obj)
-			if(obj[c]!=null)
-				els.push(wrap(tag,c,obj[c]));
-		return els;
-	},
-	
-	divs = wraps("div"),
-	spans = wraps("span"),
-	
-	input = attrs => Object.assign(document.createElement("input"),attrs),
-	
-	label	= attrs => {
-		const label = wrap("label",attrs.name);
-		label.appendChild( input(attrs) );
-		return label;
-	},
 	
 	near = (weeks,week,margin) => {
 		const bits=[],
@@ -160,7 +135,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 					,'extra'.d("! (.title .week .day .rental .person)spans")
 				)
 				
-				,'weeks'.d("$boat=$; *@ $month:saturdays" //? $book; 
+				,'weeks'.d("$boat=$; *@ $month:saturdays"
 					,'week'.d(""
 						,'dates'.d("!! .start:hum@")
 						,'price'.d("! (`//api.boataround.com/v1/price/ ...slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
@@ -211,13 +186,10 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	},
 	
 	flatten:{
-		divs, spans,
-		inputs: (values,tags) => values.map( (name,i) => label({ name, type:tags[i]||'text', required:true }) ).reverse(),
-		hiddens: (values,tags) => values.map( (value,i) => input({ name:tags[i], value, type:'hidden'}) ),
 		near	: values=>near(values.pop(),values.pop(),2)
-	},
+	},	
 	
-	convert:{ 	tsv, options, divs, spans, mw,
+	convert:{ 	tsv, options, mw,
 			ba:boataround.convert,
 			saturdays:mw.weeks(6),
 			
@@ -229,5 +201,6 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 })
 
 .FUNC({convert:mapping})
+.FUNC(wraps)
 
 .RENDER();
