@@ -1,6 +1,6 @@
 const
 
-VERSION = 'v0.1',
+VERSION = 'v0.1p',
 
 urlsToCache = [
 /*	'./manifest.json',
@@ -21,26 +21,13 @@ cached = ( _=>{
 
 	strategies = {
 		// n: fetch,
-		co: async req => await cache.match(req),
-		nc: async req => await fetchncache(req) || await cache.match(req),
-		cn: async req => await cache.match(req) || await fetchncache(req),
+		co: req => cache.match(req),
+		nc: req => fetchncache(req).then( resp => resp || cache.match(req) ),
+		cn: req => cache.match(req).then( resp => resp || fetchncache(req) ),
 		swr:  async req => cache.add(req) && await cache.match(req)
 	},	
-	
 
-	fetchncache = async req => {
-		
-		const resp = await fetch(req).catch(e=>{
-			console.warn("Offline "+req.url);
-		});
-		
-		if(resp && resp.ok)
-			cache.put(req, resp.clone()).catch(e=>{
-				console.error(e);
-			});
-			
-		return resp;
-	};
+	fetchncache = req => fetch(req).then( resp => resp && resp.ok && cache.put(req, resp.clone()) && resp );
 
 	return (CACHE_NAME, decide) => event => {
 		
@@ -72,6 +59,7 @@ events={
 
 	fetch: cached( VERSION, req =>
 			req.method.toUpperCase()!='GET' ? 'n':
+			req.url.includes("service-worker") ? 'n':
 			req.url.includes("manifest.json") ? 'n':
 			req.url.includes(".php") ? 'nc':
 			"cn"

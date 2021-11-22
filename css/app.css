@@ -220,3 +220,7 @@ select.shipclass {
 .specs>icon {
   margin-right: 1em;
 }
+
+.specs>icon::before {
+  color: lightslategray;
+}
