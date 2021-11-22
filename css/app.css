@@ -1,3 +1,5 @@
+body{font: normal 1rem/1.6 'Montserrat',sans-serif;}
+
 section.map	{height:400px;}
 section.bay {background: ghostwhite;}
 
@@ -7,7 +9,7 @@ section.bay {background: ghostwhite;}
 .brief{position:relative;overflow: hidden;white-space: nowrap;}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
 .brief>.subtitle{color: lightcoral;font-style: italic;font-family:cursive;display: inline;}
-.brief>.note{color:gray; font-size:.9em}
+.brief>.note{color:gray;/* font-size:.9em */}
 .brief>.price{position:absolute;padding: 0 .2em;right:0;}
 .brief>.price::before {color: lightgray;font-size: .8em;}
 
@@ -37,7 +39,7 @@ attic {
 }
 
 .specs {
-  font-size: .9em;
+  /* font-size: .9em; */
 }
 
 .price:not(:empty)::after {content: " €";}
@@ -49,7 +51,7 @@ img.flag {
   left: -24px;
   top: 6px;
 }
-
+/*
 .specs>.sleeps {
   background-image: url(16px/face.png);
 }
@@ -66,7 +68,7 @@ img.flag {
   background-image: url(16px/wc.png);
 }
 
-
+*/
 page.book{
   text-align: center;
 }
@@ -213,4 +215,8 @@ select.shipclass {
 .bay {
   background: ghostwhite;
   padding-bottom: 2em;
+}
+
+.specs>icon {
+  margin-right: 1em;
 }

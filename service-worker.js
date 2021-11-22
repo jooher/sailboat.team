@@ -1,6 +1,6 @@
 const
 
-VERSION = 'v0',
+VERSION = 'v0.1',
 
 urlsToCache = [
 /*	'./manifest.json',
