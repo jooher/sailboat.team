@@ -116,22 +116,12 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	:'IMG.flag'.d("!! (`chrome/flags/ .flag@ `.png)uri@src"),
 
 	Ships	
-	:'ships'.d("*@ .ships"//
+	:'ships'.d("*@ .ships"
+	
 		,'offer'.d("$?="
 			,'brief'.d("? .busy .busy=( .weeks $week )near; ! (.make@title .name@subtitle .note .price )divs" // Flag
 				,'specs'.d("! .specs:spans ")
-/*				
-				,'specs'.d("*@ .specs"
-					,'ICON.face'.d("! .sleeps")
-					,'ICON.bed'.d("! .cabins")
-					,'ICON.shower'.d("! .wc")
-					,'ICON.hub'.d("! .hp")
-				)
-*/				
-/* 				,'weeks'.d("*@ .busy" 
-					,'week'.d("!? .busy")
-				)
- */			).ui("$?=$?:!")
+			).ui("$?=$?:!")
  
 			,'details'.d("? $?; focus $?@offer; ? .data .data=(db@ .slug)uri:query; *@ .data"
 			
