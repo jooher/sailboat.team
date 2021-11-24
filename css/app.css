@@ -1,4 +1,4 @@
-body{font: normal 1rem/1.6 'Montserrat',sans-serif;}
+body{font: normal .9rem/1.6 'Montserrat',sans-serif;}
 
 section.map	{height:400px;}
 section.bay {background: ghostwhite;}
@@ -115,7 +115,7 @@ input[type="submit"] {
   background: darkslateblue;
 }
 
-.week>.dates {margin-top: -1.5em;text-align: left;color: gray;font-size: .8em;}
+.week>.dates {margin-top: -1.5em;text-align: left;color: gray;font-size: .8rem;}
 
 .week>.price {
   line-height: 2em;
@@ -148,7 +148,7 @@ etage>.brief {
 
 .extras {
   position:relative;
-  font-size: .8em;
+  font-size: .8rem;
 }
 
 .extras::before{
@@ -223,4 +223,12 @@ select.shipclass {
 
 .specs>icon::before {
   color: lightslategray;
+}
+
+attic {
+  padding: .25rem;
+}
+
+attic>.title {
+  font-size: 1.5em;
 }
