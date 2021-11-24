@@ -118,7 +118,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	Ships	
 	:'ships'.d("*@ .ships"
 	
-		,'offer'.d("$?="
+		,'ARTICLE.offer'.d("$?="
 			,'brief'.d("? .busy .busy=( .weeks $week )near; ! (.make@title .name@subtitle .note .price )divs" // Flag
 				,'specs'.d("! .specs:spans ")
 			).ui("$?=$?:!")
