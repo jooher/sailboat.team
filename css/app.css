@@ -1,4 +1,4 @@
-body{font: normal .9rem/1.6 'Montserrat',sans-serif;}
+body{font: normal .9rem/1.4 'Montserrat',sans-serif;}
 
 section.map	{height:400px;}
 section.bay {background: ghostwhite;}
@@ -8,7 +8,7 @@ section.bay {background: ghostwhite;}
 
 .brief{position:relative;overflow: hidden;white-space: nowrap;}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
-.brief>.subtitle{color: lightcoral;font-style: italic;font-family:cursive;display: inline;}
+.brief>.subtitle{color: dodgerblue;/* font-style: italic; *//* font-family:cursive; */display: inline;}
 .brief>.note{color:gray;/* font-size:.9em */}
 .brief>.price{position:absolute;padding: 0 .2em;right:0;}
 .brief>.price::before {color: lightgray;font-size: .8em;}
@@ -179,9 +179,9 @@ section.intro {
 }
 
 a.order {
-  display: block;
-  text-align: center;
-  margin-top: 1em;
+  /* display: block; */
+  /* text-align: center; */
+  /* margin-top: 1em; */
 }
 
 .more {
@@ -227,8 +227,84 @@ select.shipclass {
 
 attic {
   padding: .25rem;
+  padding-right: 4rem;
 }
 
 attic>.title {
   font-size: 1.5em;
+}
+
+.links {
+  display: flex;
+  margin-top: 1em;
+  justify-content: space-between;
+}
+
+.links>a {
+  display: inline-block;
+  margin: .5em;
+  color: black;
+  text-decoration: none;
+}
+
+.match>ul{margin: 2em 0;padding: 0;}
+
+.match>ul>li {
+  display: block;
+  margin: .5em 0;
+}
+
+.match {
+  height: 24em;
+  overflow-y: auto;
+}
+
+ul::before {
+  font-weight: bold;
+  margin: .5em 0;
+}
+
+attic>icon.search {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  font-size: 2em;
+}
+
+ul>a {
+  display: block;
+  margin: .5em 0;
+}
+
+.offer>icon.share {
+  position: absolute;
+  background: white;
+  color: dodgerblue;
+  right: 0;
+  top: .5rem;
+  font-size: 1.25em;
+  z-index: 2;
+  display: none;
+}
+
+.focused>icon.share {
+  display: block;
+}
+
+.details>vault {
+  margin-top: 2em;
+}
+
+::before {}
+
+vault>a.button {
+  background: dodgerblue;
+  color: white;
+}
+
+vault>a {
+  /* vertical-align: baseline; */
+  /* display: inline-block; */
+  text-decoration: none;
+  color: dodgerblue;
 }

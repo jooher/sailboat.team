@@ -1,8 +1,11 @@
-import "./0.5.js";//"https://dap.js.org/0.5.js";
+import "./0.5.js";//"https://dap.js.org/0.5.js";//
 import scrollfocus from "./jsm/scrollfocus.js";	
 import wraps from "./jsm/wraps.js";
 
 import mwx from "./jsm/weeks.js";
+
+import {dialog, FUNC as modal} from "./jsm/modal.js";
+
 const mw = mwx("ru",Date.now());
 
 /*
@@ -40,7 +43,8 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 	mapping = {
 		
-		bays	: txt => tsv(txt).map(
+		bays
+		: txt => tsv(txt).map(
 			([pos,qty,title])=>({
 				id:title,
 				pos:pos.split(":"),
@@ -48,14 +52,24 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				title:title//+"\n"+prices
 			})),
 			
-		ships : txt => tsv(txt).map(
-				([id,weeks,shipclass,price,name,make,options,note])=>({id,weeks,shipclass,price,name,make,options,note})
+		ships
+		: txt => tsv(txt).map(
+				([id,weeks,shipclass,price,name,make,options,note])=>
+				({id,weeks,shipclass,price,name,make,options,note})
+			),
+			
+		searchresults
+		: resp => resp&&resp.data&&resp.data.reduce(
+				(a,obj)=>{ const t=obj.type; (a[t]||(a[t]=[])).push(obj); return a; },
+				{}
 			)
 	};
 	
 //export default
 
-'APP'.d("$shipclass= $week=`3 $bay= $book= $month=:date" //`Crimea
+const state="$shipclass=. $bay=. $month=(.month :date)?; ";
+
+'APP'.d(state+"$book=" //`Crimea $week=. 
 
 	,'PAGE.area'.d(""//"a!"//
 	
@@ -65,14 +79,15 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
 				.e('marker',"$bay=#.value")
 				
-			,'ATTIC'.d(""
+			,'ATTIC'.d("$?="
 				,'title'.d("! $bay").ui("focus `up")
 				,'filter'.d(""
-					,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
 					,'SELECT'.d("*@mo .mo=:mw.months"
 						,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")
 					).ui("$month=#:value; ?")
+					,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
 				)
+				,'ICON.search'.ui("? .search=Search():wait")
 			)
 			
 			,'SECTION'.d("? $bay; $shipclass $page=`1"
@@ -98,7 +113,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	.d("! ($book._id@boat_id .week.start:iso@checkInDate .week.end:iso@checkOutDate)hiddens (`name `surname @email`email @tel`phone-number @submit)inputs")
 */
 	
-)
+).e('HASHCHANGE', "& :state; "+state)
 
 .DICT({ html,
 	
@@ -118,8 +133,11 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	Ships	
 	:'ships'.d("*@ .ships"
 	
-		,'ARTICLE.offer'.d("$?="
-			,'brief'.d("? .busy .busy=( .weeks $week )near; ! (.make@title .name@subtitle .note .price )divs" // Flag
+		,'ARTICLE.offer'.d("$?=" //? .busy .busy=( .weeks $week )near; 
+		
+			,'ICON.share'.ui('((`#! $shipclass $bay $month)uri@url (.make .name)spaced@title ):share; ?')
+					
+			,'brief'.d("! (.make@title .name@subtitle .note .price )divs" // Flag
 				,'specs'.d("! .specs:spans ")
 			).ui("$?=$?:!")
  
@@ -148,7 +166,10 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 				
 				,'BUTTON.order `See charter details'.ui("$book=$")
 */
-				,'A.order target=_blank'.d("!! (`https://www.boataround.com/boat/ ..slug)concat@href")
+				,'VAULT'.d(""
+					,'A.crew-boat target=_blank'.d("!! (`https://crewit/# ..slug)uri@href")
+					,'A.button.book-boat target=_blank'.d("!! (`https://www.boataround.com/boat/ ..slug)concat@href")
+				)
 			)
 		).a("!? $?@focused")
 	),
@@ -157,6 +178,33 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	:'weeks'.d("*@ ( .weeks $week )near@week"
 		,'week'.d("? .week; !! .week@title").ui("$book=(.week ..$)")
 		,'week.busy'.d("? .week:!")
+	)
+	
+	,Search
+	:dialog("$query="
+		,'INPUT.search'.e("keyup","$query=#:value; ?")
+		,'match'.d(`
+			? ("2 $query.length)asc;
+			$res=("//api.boataround.com/v1/autocomplete? $query)uri:query,searchresults
+			`
+			,'UL.ships'.d('*@ $res.boat'
+				,'A'.d("!! .name@ (`#! .id@boat)uri@href ")//.ui("$boat=.id")
+			)
+/*
+			,'UL.makes'.d('*@ $res.manufacturer'
+				,'LI'.d("! .name").ui("$boat=.id")
+			)
+			,'UL.charters'.d('*@ $res.charter'
+				,'A'.d("!! .name@ (`#! .id@bay)uri@href ")//.ui("$boat=.id")
+			)
+*/
+			,'UL.marinas'.d('*@ $res.marina'
+				,'A'.d("!! .name@ (`#! .name@bay)uri@href ")//.ui("$boat=.id")
+			)
+			,'UL.regions'.d('*@ $res.region'
+				,'A'.d("!! .name@ (`#! .name@bay)uri@href ")//.d("! .name")
+			)
+		)
 	)
 		
 })
@@ -193,12 +241,20 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 			
 			date	: date => date&&date.toDateString(),
 			hum	: date => date&&date.toDateString().split(" ").slice(0,3).join(" "),
-			iso	: (pad => date => date&&[date.getFullYear(),pad(date.getMonth()+1),pad(date.getDate())].join("-"))(i=>i<10?"0"+i:i)
+			iso	: (pad => date => date&&[date.getFullYear(),pad(date.getMonth()+1),pad(date.getDate())].join("-"))(i=>i<10?"0"+i:i),
+			
+			share : data => navigator.share && navigator.share(data) && true,
+			
+			state	: (_,r) => {
+					const p = r && location.href.split("#!")[1];
+					return p && Object.fromEntries(new URLSearchParams(p));
+				}
+
 		}
 	
 })
 
 .FUNC({convert:mapping})
-.FUNC(wraps)
+.FUNC(wraps,modal)
 
 .RENDER();

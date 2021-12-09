@@ -6,11 +6,20 @@ label.week::before{ content: "Даты аренды"}
 
 .brief>.price::before {content: "от "}
 
-.extra>.week:not(:empty)::after {content: " €/week";}
-.extra>.day:not(:empty)::after {content: " €/day";}
-.extra>.rental:not(:empty)::after {content: " €";}
-.extra>.person:not(:empty)::after {content: " €/person";}
+.extra>.week:not(:empty)::after {content: " €/week"}
+.extra>.day:not(:empty)::after {content: " €/day"}
+.extra>.rental:not(:empty)::after {content: " €"}
+.extra>.person:not(:empty)::after {content: " €/person"}
 
-a.order::before{content: "Забронировать эту лодку >>>";}
+a.book-boat::before{content: "Забронировать";/* background: dodgerblue; */}
+a.crew-boat::before{content: "Собрать команду";}
 
 .more::before {content: "Еще...";}
+
+attic>.title:empty::after{content:"выберите регион на карте ↑"}
+
+.match>.ships::before{content:"Яхты"}
+.match>.makes::before{content:"Производители"}
+.match>.charters::before{content:"Чартеры"}
+.match>.marinas::before{content:"Марины"}
+.match>.regions::before{content:"Регионы"}

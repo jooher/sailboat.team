@@ -22,7 +22,9 @@ shipclass	= (category,sleeps) => categories[category] + sleeps>>1,
 
 coords	= c => c.map( f => f.toFixed(3) ).reverse().join(":"),
 dest2tsv	= d => [coords(d.coords),d.count,d.name].join("\t"),
-slug = name => name.toLowerCase().replace(/[^a-z]/g,'-'),
+slug = name => name.toLowerCase().normalize("NFD").replace(/[^a-z ]/g,'').replace(/\s+/g,'-'),
+
+//str.replace(/[\u0300-\u036f]/g, "")
 
 //api.boataround.com/v1/getMostPopularDestinations/en_EN
 //api.boataround.com/v1/getDestinations/en_EN?destinationSearches=italy
