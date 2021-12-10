@@ -94,21 +94,19 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 			).u("?")
 
 			,'SECTION'.d("? $boat; * (db@ $boat@slug)uri:query; ! Ship"
-			
 				,'more'.ui("$boat=")
 			)
 			
 			,'SECTION'.d("? $boat:!; ? $bay; $shipclass $page=`1"
 			
 				,'bay'.d("a!")
-				.a("? $page; *@ .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; ! Ship")//Ships( .ships )
+				.a("? $page; *@ .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; ! Ship")
 				
 				,'more'.d('? $page')
 				.ui("$page=( (.ships.length `18)eq $page:++ :? )?!")
 			)
 			
-			,'SECTION'.d("? $bay:!; "
-				//,'SELECT.destination'.d("*@ populardest; ! Option").ui("$bay=#:value")
+			,'SECTION'.d("? $bay:!"
 				,'intro'.d("! html.intro html.book")
 			)
 		
@@ -121,7 +119,7 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 	.d("! ($book._id@boat_id .week.start:iso@checkInDate .week.end:iso@checkOutDate)hiddens (`name `surname @email`email @tel`phone-number @submit)inputs")
 */
 	
-).e('HASHCHANGE', "& :state; "+state)
+).e('HASHCHANGE', "& @boat :state; "+state)
 
 .DICT({ html,
 	
@@ -190,11 +188,13 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 	
 	Search
 	:dialog("$query="
-		,'INPUT.search'.e("keyup","$query=#:value; ?")
-		,'match'.d(`
-			? ("2 $query.length)asc;
-			$res=("//api.boataround.com/v1/autocomplete? $query)uri:query,searchresults
-			`
+	
+		,"LABEL.search".d(""
+			,'INPUT autofocus'.e("keyup",'? ("3 #.value.length)asc; $query=#:value; ?')
+		)
+		
+		,'match'.d('? $query; $res=("//api.boataround.com/v1/autocomplete? $query)uri:query,searchresults'
+		
 			,'UL.ships'.d('*@ $res.boat'
 				,'A'.d("!! .name@ (`#! .id@boat)uri@href ")//.ui("$boat=.id")
 			)
@@ -207,10 +207,10 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 			)
 */
 			,'UL.marinas'.d('*@ $res.marina'
-				,'A'.d("!! .name@ (`#! .name@bay)uri@href ")//.ui("$boat=.id")
+				,'A'.d("!! .name@ (`#! .name@bay)uri@href")//.ui("$boat=.id")
 			)
 			,'UL.regions'.d('*@ $res.region'
-				,'A'.d("!! .name@ (`#! .name@bay)uri@href ")//.d("! .name")
+				,'A'.d("!! .name@ (`#! .name@bay)uri@href")//.d("! .name")
 			)
 		)
 	)

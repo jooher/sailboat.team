@@ -78,29 +78,7 @@ form {
   text-align: left;
 }
 
-input {
-  width: 100%;
-  margin: .25em 0;
-  box-sizing: border-box;
-  border-width: 0 0 1px 0;
-  padding: .25em 0;
-  font-size: 1.2em;
-  border-color: lightgray;
-  background-color: lavender;
-}
 
-label {
-  display: block;
-  margin-top: 1em;
-  width: 100%;
-}
-
-label::before {
-  display: block;
-  text-align: left;
-  color: gray;
-  font: italic .9em sans-serif;
-}
 
 input[type="submit"] {
   padding: 1em;
@@ -314,4 +292,8 @@ attic>.icons {
   right: 4px;
   top: 0;
   font-size: 1.5em;
+}
+
+dialog>.search {
+  text-align: center;
 }

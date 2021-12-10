@@ -269,6 +269,12 @@ article.focused {
   display: block;
 }
 
+label::before {
+  display: block;
+  font: italic .9em sans-serif;
+}
+
+
 .centered {
   text-align: center;
 }
@@ -279,11 +285,6 @@ footer {
   padding: 1em;
   align-items: center;
 }
-
-.search::before {
-  font-size: inherit;
-}
-
 
 
 

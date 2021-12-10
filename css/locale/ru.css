@@ -16,7 +16,7 @@ a.crew-boat::before{content: "Собрать команду";}
 
 .more::before {content: "Еще...";}
 
-attic>.title:empty::after{content:"выберите регион на карте ↑"}
+attic>.title:empty::after{content: "↑ выберите регион на карте ↑";}
 
 .match>.ships::before{content:"Яхты"}
 .match>.makes::before{content:"Производители"}
@@ -26,3 +26,5 @@ attic>.title:empty::after{content:"выберите регион на карте
 
 
 button.others::before {content: "Помотреть все лодки в этой марине";}
+
+label.search::before {content: "Название лодки, марины или места";}
