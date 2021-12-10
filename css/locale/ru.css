@@ -23,3 +23,6 @@ attic>.title:empty::after{content:"выберите регион на карте
 .match>.charters::before{content:"Чартеры"}
 .match>.marinas::before{content:"Марины"}
 .match>.regions::before{content:"Регионы"}
+
+
+button.others::before {content: "Помотреть все лодки в этой марине";}

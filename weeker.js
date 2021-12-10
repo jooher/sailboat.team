@@ -89,11 +89,14 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 				)
 				,'icons'.d(""
 					,'ICON.search'.ui("? .search=Search():wait")
-					,'ICON.share'.ui('((`#! $shipclass $bay $month)uri@url ($bay $month)spaced@title ):share; ?')//
+					,'ICON.share'.ui('((`#! $shipclass $bay $month:mw.mmyy)uri@url ($bay $month)spaced@title ):share; ?')//
 				)
 			).u("?")
 
-			,'SECTION'.d("? $boat; * (db@ $boat@slug)uri:query; ! Ship")
+			,'SECTION'.d("? $boat; * (db@ $boat@slug)uri:query; ! Ship"
+			
+				,'more'.ui("$boat=")
+			)
 			
 			,'SECTION'.d("? $boat:!; ? $bay; $shipclass $page=`1"
 			
