@@ -67,9 +67,9 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 //export default
 
-const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?; 
+const state="$boat=. $bay=. $month:check=. $shipclass=. ";//(.month :date)?; 
 
-'APP'.d(state+"$book=" //`Crimea $week=. 
+'APP'.d(state+"$book="
 
 	,'PAGE.area'.d(""//"a!"//
 	
@@ -85,7 +85,7 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 					,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
 					,'SELECT'.d("*@mo .mo=:mw.months"
 						,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@ (($month .mo:date)eq@selected")//
-					).ui("$month=#:value; ?")
+					).ui("$month=#:value")
 				)
 				,'icons'.d(""
 					,'ICON.search'.ui("? .search=Search():wait")
@@ -119,7 +119,9 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 	.d("! ($book._id@boat_id .week.start:iso@checkInDate .week.end:iso@checkOutDate)hiddens (`name `surname @email`email @tel`phone-number @submit)inputs")
 */
 	
-).e('HASHCHANGE', "& @boat :state; "+state)
+)
+.a("($boat $bay $month)uri:state")
+.e('HASHCHANGE', "log `hash!; & @boat :state; "+state)
 
 .DICT({ html,
 	
@@ -253,9 +255,14 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 			
 			share : data => navigator.share && navigator.share(data) && true,
 			
-			state	: (_,r) => {
-					const p = r && location.href.split("#!")[1];
-					return p && Object.fromEntries(new URLSearchParams(p));
+			state	: (value,r) => {
+					const present = r && location.href.split("#!")[1];
+					
+					if(value==null)
+						return present && Object.fromEntries(new URLSearchParams(present));
+					
+					if(value!=present)
+						return history.pushState(null,null,"#!"+value)
 				}
 
 		}
