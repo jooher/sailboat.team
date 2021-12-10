@@ -19,7 +19,7 @@ const
 export default lang => {
 	
 	const monthnames = monthsloc[lang].split(" "),
-		months = (year,month)=>monthnames.map( (x,i) => new Date(year,month+i,1) ),
+		months = (year,month)=>monthnames.map( (x,i) => new Date(year,month+i,1) ),//.toDateString()
 		monthsnow = months(now.getFullYear(),now.getMonth());
 		
 	return {

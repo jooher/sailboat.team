@@ -67,7 +67,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 	
 //export default
 
-const state="$shipclass=. $bay=. $month=(.month :date)?; ";
+const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?; 
 
 'APP'.d(state+"$book=" //`Crimea $week=. 
 
@@ -77,23 +77,28 @@ const state="$shipclass=. $bay=. $month=(.month :date)?; ";
 		
 			,'SECTION.map#up'
 				.d("geomap (`tsv/destinations.tsv)uri:query,bays")
-				.e('marker',"$bay=#.value")
+				.e('marker',"$bay=#.value $boat=")
 				
 			,'ATTIC'.d("$?="
 				,'title'.d("! $bay").ui("focus `up")
 				,'filter'.d(""
-					,'SELECT'.d("*@mo .mo=:mw.months"
-						,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@")
-					).ui("$month=#:value; ?")
 					,'SELECT.shipclass'.d("*@ shipclasses; ! Option").ui("$shipclass=#:value")
+					,'SELECT'.d("*@mo .mo=:mw.months"
+						,'OPTION'.d("!! .mo:date@value .mo:mw.mmyy@ (($month .mo:date)eq@selected")//
+					).ui("$month=#:value; ?")
 				)
-				,'ICON.search'.ui("? .search=Search():wait")
-			)
+				,'icons'.d(""
+					,'ICON.search'.ui("? .search=Search():wait")
+					,'ICON.share'.ui('((`#! $shipclass $bay $month)uri@url ($bay $month)spaced@title ):share; ?')//
+				)
+			).u("?")
+
+			,'SECTION'.d("? $boat; * (db@ $boat@slug)uri:query; ! Ship")
 			
-			,'SECTION'.d("? $bay; $shipclass $page=`1"
+			,'SECTION'.d("? $boat:!; ? $bay; $shipclass $page=`1"
 			
 				,'bay'.d("a!")
-				.a("? $page; .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; Ships( .ships )")
+				.a("? $page; *@ .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; ! Ship")//Ships( .ships )
 				
 				,'more'.d('? $page')
 				.ui("$page=( (.ships.length `18)eq $page:++ :? )?!")
@@ -131,56 +136,56 @@ const state="$shipclass=. $bay=. $month=(.month :date)?; ";
 	:'IMG.flag'.d("!! (`chrome/flags/ .flag@ `.png)uri@src"),
 
 	Ships	
-	:'ships'.d("*@ .ships"
+	:'ships'.d("*@ .ships; ! Ship"),
 	
-		,'ARTICLE.offer'.d("$?=" //? .busy .busy=( .weeks $week )near; 
+	Ship
+	:'ARTICLE.offer'.d("$?=(.slug ..boat)eq; a!" //? .busy .busy=( .weeks $week )near; 
+	
+		,'ICON.share'.ui('((`#! .slug@boat $shipclass $bay $month)uri@url (.make .name)spaced@title ):share; ?')//
+				
+		,'brief'.d("! (.make@title .name@subtitle .note .price )divs" // Flag
+			,'specs'.d("! .specs:spans ")
+		).ui("$?=$?:!")
+
+		,'details'.d("? $?; focus $?@offer; ? .data .data=(db@ .slug)uri:query; &@ .data"
 		
-			,'ICON.share'.ui('((`#! $shipclass $bay $month)uri@url (.make .name)spaced@title ):share; ?')
-					
-			,'brief'.d("! (.make@title .name@subtitle .note .price )divs" // Flag
-				,'specs'.d("! .specs:spans ")
-			).ui("$?=$?:!")
- 
-			,'details'.d("? $?; focus $?@offer; ? .data .data=(db@ .slug)uri:query; *@ .data"
+			,'gallery'.d("* .pics@src"
+				,'IMG'.d("!! .src:ba.pic")
+			)
 			
-				,'gallery'.d("* .pics@src"
-					,'IMG'.d("!! .src:ba.pic")
-				)
-				
-				,'extras'.d("? .extras:??; *@ .extras"
-					,'extra'.d("! (.title .week .day .rental .person)spans")
-				)
-				
-				,'weeks'.d("$boat=$; *@ $month:saturdays"
-					,'week'.d(""
-						,'dates'.d("!! .start:hum@")
-						,'price'.d("! (`//api.boataround.com/v1/price/ ...slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
-						.ui("$book=( $boat $@week )")
-					)
-				)
-/*				
-				,'more'.d(""
-					,'checklists'.d()
-					,'feedback'.d()
-				)focused
-				
-				,'BUTTON.order `See charter details'.ui("$book=$")
-*/
-				,'VAULT'.d(""
-					,'A.crew-boat target=_blank'.d("!! (`https://crewit/# ..slug)uri@href")
-					,'A.button.book-boat target=_blank'.d("!! (`https://www.boataround.com/boat/ ..slug)concat@href")
+			,'extras'.d("? .extras:??; *@ .extras"
+				,'extra'.d("! (.title .week .day .rental .person)spans")
+			)
+			
+			,'weeks'.d("$boat=$; *@ $month:saturdays"
+				,'week'.d(""
+					,'dates'.d("!! .start:hum@")
+					,'price'.d("! (`//api.boataround.com/v1/price/ ..slug@ `? .start:iso@checkIn .end:iso@checkOut)uri:query,ba.price")
+					//.ui("$book=( $boat $@week )")
 				)
 			)
-		).a("!? $?@focused")
-	),
+/*				
+			,'more'.d(""
+				,'checklists'.d()
+				,'feedback'.d()
+			)focused
+			
+			,'BUTTON.order `See charter details'.ui("$book=$")
+*/
+			,'VAULT'.d(""
+				,'A.crew-boat target=_blank'.d("!! (`https://crewit/# ..slug)uri@href")
+				,'A.button.book-boat target=_blank'.d("!! (`https://www.boataround.com/boat/ ..slug)concat@href")
+			)
+		)
+	).a("!? $?@focused"),
 		
 	Weeks
 	:'weeks'.d("*@ ( .weeks $week )near@week"
 		,'week'.d("? .week; !! .week@title").ui("$book=(.week ..$)")
 		,'week.busy'.d("? .week:!")
-	)
+	),
 	
-	,Search
+	Search
 	:dialog("$query="
 		,'INPUT.search'.e("keyup","$query=#:value; ?")
 		,'match'.d(`

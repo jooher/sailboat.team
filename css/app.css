@@ -227,7 +227,7 @@ select.shipclass {
 
 attic {
   padding: .25rem;
-  padding-right: 4rem;
+  /* padding-right: 4rem; */
 }
 
 attic>.title {
@@ -307,4 +307,11 @@ vault>a {
   /* display: inline-block; */
   text-decoration: none;
   color: dodgerblue;
+}
+
+attic>.icons {
+  position: absolute;
+  right: 4px;
+  top: 0;
+  font-size: 1.5em;
 }
