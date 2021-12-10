@@ -173,8 +173,8 @@ const state="$boat=. $shipclass=. $bay=. $month:check=. ";//(.month :date)?;
 			,'BUTTON.order `See charter details'.ui("$book=$")
 */
 			,'VAULT'.d(""
-				,'A.crew-boat target=_blank'.d("!! (`https://crewit/# ..slug)uri@href")
-				,'A.button.book-boat target=_blank'.d("!! (`https://www.boataround.com/boat/ ..slug)concat@href")
+				,'A.crew-boat target=_blank'.d("!! (`//jooher.github.io/crewit/# ..slug)uri@href")
+				,'A.button.book-boat target=_blank'.d("!! (`//www.boataround.com/boat/ ..slug)concat@href")
 			)
 		)
 	).a("!? $?@focused"),
