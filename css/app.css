@@ -1,104 +1,118 @@
-body{font: normal .9rem/1.4 'Montserrat',sans-serif;}
+etage{background: ghostwhite}
+attic{background: dodgerblue;color: white}
+attic>.filter>select { background: white }
 
-section.map	{height:400px;}
-section.bay {background: ghostwhite;}
+article.focused{background-color: white}
 
-.offer{padding: 1rem .5rem;border-bottom: ;transition: background-color 2s ease-out;}
-.offer.focused{background-color: white;box-shadow: 0 2px 4px rgb(0 0 0 / 25%);margin: 6px 0;box-sizing: border-box;}
+.brief>.note{color:gray}
+.brief>.subtitle{color: dodgerblue}
+.brief>.price::before {color: lightgray}
+.gallery{background: white}
 
-.brief{position:relative;overflow: hidden;white-space: nowrap;}
-.brief>.title{font-weight:bold;display: inline;margin-right: .5em;}
-.brief>.subtitle{color: dodgerblue;/* font-style: italic; *//* font-family:cursive; */display: inline;}
-.brief>.note{color:gray;/* font-size:.9em */}
-.brief>.price{position:absolute;padding: 0 .2em;right:0;}
-.brief>.price::before {color: lightgray;font-size: .8em;}
+[contenteditable]:empty::before{ color: silver; }
 
 
-.weeks{display: flex;vertical-align: bottom;}
-.weeks>.week{flex:1;margin: 2px;}
+.book>attic {
+	background: darkslateblue;
+}
 
-.gallery{margin: 1rem -.5rem;height: 320px;overflow-x:scroll;overflow-y: hidden;white-space: nowrap;background: white;}
-.gallery>img{max-height: 320px; margin: 0 1px;vertical-align: middle;}
+vault>a.button { background: dodgerblue; color: white }
 
+vault>a { text-decoration: none; color: dodgerblue }
+
+
+
+
+
+
+body {
+	font: normal .9rem/1.4 'Montserrat',sans-serif
+}
 
 attic {
-  background: dodgerblue;
-  color: white;
+	padding: .5rem;
 }
+
+attic>.title {
+	font-size: 1.2rem;
+}
+
+attic>.filter {
+	display: flex;
+	gap:.5em;
+}
+
+attic>.icons {
+  position: absolute;
+  right: 4px;
+  top: 0;
+  font-size: 1.5em;
+}
+
+select.shipclass {
+	flex: 1;
+}
+
+section.map	{height:400px}
+
+.offer{/* padding: 1rem; */transition: background-color 2s ease-out;}
+
+.brief{position:relative;overflow: hidden;white-space: nowrap}
+.brief>.title{font-weight:bold;display: inline;margin-right: .5em}
+.brief>.subtitle{display: inline}
+.brief>.price{position:absolute;padding: 0 .2em;right:0}
+.brief>.price::before {font-size: .8em}
+
+
+.weeks{display: flex;vertical-align: bottom}
+.weeks>.week{flex:1;margin: 2px}
+
+.gallery{margin: 1rem -1rem;height: 320px;overflow-x:scroll;overflow-y: hidden;white-space: nowrap;}
+.gallery>img{max-height: 320px; margin: 0 1px;vertical-align: middle}
+
+
 
 .specs>span {
   margin-right: 8px;
   padding: 2px 6px;
   background: 2px no-repeat;
-  /* background-color: bisque; */
   padding-left: 21px;
 }
 
-.specs>.hp::after{
-	content:"hp"
+img.flag {
+	position: absolute;
+	left: -24px;
+	top: 6px;
 }
 
-.specs {
-  /* font-size: .9em; */
-}
-
-.price:not(:empty)::after {content: " €";}
-.price:empty::after {content: "-";}
+.specs>.sleeps { background-image: url(16px/face.png) }
+.specs>.cabins { background-image: url(16px/doublebed.png) }
+.specs>.hp { background-image: url(16px/engine.png) }
+.specs>.wc { background-image: url(16px/wc.png) }
+.specs>.hp::after{ content:"hp" }
+.price:not(:empty)::after {content: " €"}
+.price:empty::after {content: "-"}
 .price:empty{pointer-events:none}
 
-img.flag {
-  position: absolute;
-  left: -24px;
-  top: 6px;
-}
 
-.specs>.sleeps {
-  background-image: url(16px/face.png);
-}
-
-.specs>.cabins {
-  background-image: url(16px/doublebed.png);
-}
-
-.specs>.hp {
-  background-image: url(16px/engine.png);
-}
-
-.specs>.wc {
-  background-image: url(16px/wc.png);
-}
-
-/**/
-page.book{
-  text-align: center;
-}
 
 form {
-  margin: 1em;
-  text-align: left;
+	margin: 1em;
+	text-align: left;
 }
 
 
-
-input[type="submit"] {
-  padding: 1em;
-  border: none;
-  border-radius: 4px;
-  background: gold;
-  margin: 1em auto;
-  text-align: center;
+.week>.dates {
+	margin-top: -1.5em;
+	text-align: left;
+	color: gray;
+	font-size: .8rem
 }
-
-.book>attic {
-  background: darkslateblue;
-}
-
-.week>.dates {margin-top: -1.5em;text-align: left;color: gray;font-size: .8rem;}
 
 .week>.price {
-  line-height: 2em;
-  background-color: lightgreen;
-  text-align: center;
+	line-height: 2em;
+	background-color: lightgreen;
+	text-align: center;
 }
 
 .week>.price:empty{
@@ -106,27 +120,16 @@ input[type="submit"] {
 }
 
 section.dates {
-  margin: 2em;
-}
-
-.dates>select {
-  border: none;
-  background: none;
-  outline: none;
+	margin: 2em;
 }
 
 .weeks {
-  margin-top: 2em;
+	margin-top: 2em;
 }
-
-etage>.brief {
-  margin: 1em;
-}
-
 
 .extras {
-  position:relative;
-  font-size: .8rem;
+	position:relative;
+	font-size: .8rem;
 }
 
 .extras::before{
@@ -135,164 +138,98 @@ etage>.brief {
 }
 
 .extra {
-  display: inline-block;
-  margin: 2px 2px;
-  padding: .2em.5em;
-  background: bisque;
-  border-radius: .5em;
-  text-align: center;
+	display: inline-block;
+	margin: 2px 2px;
+	padding: .2em.5em;
+	background: bisque;
+	border-radius: .5em;
+	text-align: center;
 }
 
 
 .extra>.title {
-  display: block;
+	display: block;
 }
 
 .dates {
-  margin-top: 1.4em;
+	margin-top: 1.4em;
 }
 
 section.intro {
-  text-align: center;
-}
-
-a.order {
-  /* display: block; */
-  /* text-align: center; */
-  /* margin-top: 1em; */
+	text-align: center;
 }
 
 .more {
-  text-align: center;
-  padding: 1em;
-  background: lightskyblue;
+	text-align: center;
+	padding: 1em;
+	background: lightskyblue;
 }
 
-select.destination {
-  display: block;
-  margin: 1em auto;
-}
-
-attic>.filter {
-  /* position: absolute; */
-  display: flex;
-}
-
-attic>.filter>select {
-  margin: 2px;
-  font-size: .9em;
-  border: none;
-  padding: 0;
-  border-radius: 4px;
-  background: white;
-}
-
-select.shipclass {
-  flex: 1;
-}
 
 .bay {
-  background: ghostwhite;
-  padding-bottom: 2em;
+	padding-bottom: 2em;
 }
 
 .specs>icon {
-  margin-right: 1em;
+	margin-right: 1em;
 }
 
 .specs>icon::before {
-  color: lightslategray;
-}
-
-attic {
-  padding: .25rem;
-  /* padding-right: 4rem; */
-}
-
-attic>.title {
-  font-size: 1.2rem;
+	color: lightslategray;
 }
 
 .links {
-  display: flex;
-  margin-top: 1em;
-  justify-content: space-between;
+	display: flex;
+	margin-top: 1em;
+	justify-content: space-between;
 }
 
 .links>a {
-  display: inline-block;
-  margin: .5em;
-  color: black;
-  text-decoration: none;
+	display: inline-block;
+	margin: .5em;
+	color: black;
+	text-decoration: none;
 }
 
-.match>ul{margin: 2em 0;padding: 0;}
+.match>ul{margin: 2em 0;padding: 0}
 
 .match>ul>li {
-  display: block;
-  margin: .5em 0;
+	display: block;
+	margin: .5em 0;
 }
 
 .match {
-  height: 24em;
-  overflow-y: auto;
+	height: 24em;
+	overflow-y: auto;
 }
 
 ul::before {
-  font-weight: bold;
-  margin: .5em 0;
-}
-
-attic>icon.search {
-  position: absolute;
-  right: 4px;
-  bottom: 4px;
-  font-size: 2em;
+	font-weight: bold;
+	margin: .5em 0;
 }
 
 ul>a {
-  display: block;
-  margin: .5em 0;
+	display: block;
+	margin: .5em 0;
 }
 
 .offer>icon.share {
-  position: absolute;
-  background: white;
-  color: dodgerblue;
-  right: 0;
-  top: .5rem;
-  font-size: 1.25em;
-  z-index: 2;
-  display: none;
+	position: absolute;
+	background: white;
+	color: dodgerblue;
+	right: .5rem;
+	top: .5rem;
+	font-size: 1.25em;
+	z-index: 2;
+	display: none;
 }
 
 .focused>icon.share {
-  display: block;
+	display: unset;
 }
 
 .details>vault {
-  margin-top: 2em;
-}
-
-::before {}
-
-vault>a.button {
-  background: dodgerblue;
-  color: white;
-}
-
-vault>a {
-  /* vertical-align: baseline; */
-  /* display: inline-block; */
-  text-decoration: none;
-  color: dodgerblue;
-}
-
-attic>.icons {
-  position: absolute;
-  right: 4px;
-  top: 0;
-  font-size: 1.5em;
+	margin-top: 2em;
 }
 
 dialog>.search {

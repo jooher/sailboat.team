@@ -1,21 +1,7 @@
-/*
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(MaterialIcons-Regular.eot);
-  src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url(MaterialIcons-Regular.woff2) format('woff2'),
-       url(MaterialIcons-Regular.woff) format('woff'),
-       url(MaterialIcons-Regular.ttf) format('truetype');
-}
-*/
-
 [data-dap=false]{display:none !important;}
 [ui=click]{cursor:pointer;}
 
-[FADE]{/* position:absolute; */animation: 1s fadein;width: 100%;}
+[FADE]{animation: 1s fadein;width: 100%;}
 [FADE].STALE{opacity:0; transition:opacity 1s ease}
 @keyframes fadein { from {opacity:0;} to {opacity:1} }
 
@@ -26,7 +12,6 @@ icon, tap, button {
 
 icon::before, tap::before, [icon]::before, .checked::before
 {
-	/* font-size: 1.2em; */
 	font-family: 'Material Icons';
 	font-weight: normal;
 	font-style: normal;
@@ -80,14 +65,21 @@ label::before {
 	margin: .5em 0;
 }
 
-button, .button {
+button, .button, input[type=submit] {
 	display: inline-block;
 	padding: .5em 1.25em;
 	border-radius:.5em;
 	text-decoration: none;
 }
 
-button.shy{background:none; }
+button.shy, .button.shy{
+	background:none;
+}
+
+input, button, select, [contenteditable], input[type="submit"]{
+	outline:none;
+	border: none;
+}
 
 input, select, textarea {
 	font-size: inherit;
@@ -107,11 +99,6 @@ input::placeholder {
 	font: italic 1em sans-serif;
 }
 
-input, button, [contenteditable] {
-	outline:none;
-	border: none;
-}
-
 label>input {
 	display: block;
 	width: 100%;
@@ -126,16 +113,13 @@ label>input {
 }
 
 
-[contenteditable]:empty::before{
-	color: silver;
-}
-
-
 
 html,body {
 	height: 100%;
 	padding: 0;
 	margin: 0;
+	scroll-behavior: smooth;
+
 }
 
 @media(max-width: 38rem){
@@ -178,13 +162,6 @@ attic	{
 	z-index: 2;
 }
 
-
-
-toggle {
-	display: block;
-	font-size:.8em;
-}
-
 attic>bar {
 	display: flex;
 	flex-direction: row;
@@ -197,12 +174,18 @@ attic>bar>icon {
 	margin: .25em;
 }
 
+
+
+toggle {
+	display: block;
+	font-size:.8em;
+}
+
 etage {
 	flex: 1;
 	position: relative;
 	flex-direction: column;
 	overflow-y: auto;
-	scroll-behavior: smooth;
 }
 
 vault{
@@ -210,7 +193,6 @@ vault{
 	justify-content: flex-end;
 	gap: 1em;
 	position: relative;
-	/* align-content: center; */
 	align-items: center;
 }
 
@@ -220,10 +202,6 @@ page>vault {
 	margin: 0;
 	font-size: 1.25em;
 	z-index: 1;
-}
-
-.dialog>vault{
-	margin-top: 2em;
 }
 
 tabset {
@@ -247,16 +225,14 @@ tab.selected {
 
 article {
 	padding: 1rem;
+	box-sizing: border-box;
 }
 
 article.focused {
-	background-color: white;
 	box-shadow: 0 2px 4px rgb(0 0 0 / 25%);
 	margin-top: .5rem;
-	box-sizing: border-box;
 	z-index: 1;
 }
-
 
 .overlay {
 	position: absolute;
@@ -264,14 +240,14 @@ article.focused {
 	box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 }
 
-.form>label {
-  margin: 2em 0;
-  display: block;
+form>label {
+	margin: 2em 0;
+	display: block;
 }
 
 label::before {
-  display: block;
-  font: italic .9em sans-serif;
+	display: block;
+	font: italic .9em sans-serif;
 }
 
 
@@ -280,13 +256,11 @@ label::before {
 }
 
 footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 1em;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	padding: 1em;
+	align-items: center;
 }
-
-
 
 
 .modal {
@@ -321,4 +295,8 @@ footer {
 	min-width: 18em;
 	max-width: 32em;
 	border: none;
+}
+
+dialog>vault{
+	margin-top: 2em;
 }

@@ -16,6 +16,16 @@ const
 		}));
 	};
 
+const
+	weekOfDate = date => {
+		const j1 = new Date(date.getFullYear(),0,1);
+		return Math.ceil((((date - j1) / 86400000) + j1.getDay()+1)/7);
+	},
+
+	dateOfWeek = (year,week,day) => {
+		return new Date(year, 0, week*7 + new Date(year,0,1).getDay() + day);
+	};
+
 export default lang => {
 	
 	const monthnames = monthsloc[lang].split(" "),
@@ -37,3 +47,5 @@ export default lang => {
 			}				
 	}
 }
+/**/
+
