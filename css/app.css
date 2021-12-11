@@ -55,7 +55,7 @@ select.shipclass {
 
 section.map	{height:400px}
 
-.offer{/* padding: 1rem; */transition: background-color 2s ease-out;}
+.offer{transition: background-color 2s ease-out;}
 
 .brief{position:relative;overflow: hidden;white-space: nowrap}
 .brief>.title{font-weight:bold;display: inline;margin-right: .5em}
