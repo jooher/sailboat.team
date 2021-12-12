@@ -6,7 +6,7 @@ article.focused{background-color: white}
 
 .brief>.note{color:gray}
 .brief>.subtitle{color: dodgerblue}
-.brief>.price::before {color: lightgray}
+.brief>.price::before {color: gray;}
 .gallery{background: white}
 
 [contenteditable]:empty::before{ color: silver; }
