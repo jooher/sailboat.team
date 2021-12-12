@@ -1,32 +1,16 @@
 import "./0.5.js";//"https://dap.js.org/0.5.js";//
-import scrollfocus from "./jsm/scrollfocus.js";	
 import wraps from "./jsm/wraps.js";
-
+import {dialog, FUNC as modal} from "./jsm/modal.js";
+import boataround from "./grab/boataround.js";
+import gmap from "./jsm/geomap.js";
 import mwx from "./jsm/weeks.js";
 
-import {dialog, FUNC as modal} from "./jsm/modal.js";
+import * from "./jsm/pwa.jsm";
 
-const mw = mwx("ru",Date.now());
 
-/*
-import Await from "/./stuff/await.js";
-import Persist from "/./stuff/persist.js";
-import Starbar from "/./stuff/bricks/starbar.js";
-*/	
-
-import boataround from "./grab/boataround.js";
-
-import gmap from "./jsm/geomap.js";
-
-const geomap = gmap({ zoom: 4, center: {lat:50,lng:17}, disableDefaultUI: true, gestureHandling:'greedy' }),//{},//
-	dap = window["https://dap.js.org/"],
-	grab	= src	=> [...(src.parentNode.removeChild(src)).children].reduce((a,n)=>{if(n.id)a[n.id]=src.removeChild(n); return a},{}),
-	html	= grab(document.getElementById("data"));
-	
-const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // Tab-separated values
-	options = txt => tsv(txt).map( ([value,title])=>({value,title}) ),
-	
-	
+const mw = mwx("ru",Date.now()),
+	geomap = gmap({ zoom: 4, center: {lat:50,lng:17}, disableDefaultUI: true, gestureHandling:'greedy' }),//{},//
+/*	
 	near = (weeks,week,margin) => {
 		const bits=[],
 			biw = BigInt(weeks);
@@ -39,6 +23,7 @@ const tsv	= txt => txt.split(/\n/g).filter(s=>s).map(str=>str.split(/\t/g)), // 
 		
 		return bits;
 	},
+*/
 	
 	mapping = {
 		
@@ -70,7 +55,7 @@ const state="$boat=. $bay=. $month:check=. $shipclass=. ";//(.month :date)?;
 
 'APP'.d(state+"$book="
 
-	,'PAGE.area'.d(""//"a!"//
+	,'PAGE.area'.d(""
 	
 		,'ETAGE'.d(""
 		
@@ -99,7 +84,7 @@ const state="$boat=. $bay=. $month:check=. $shipclass=. ";//(.month :date)?;
 			,'SECTION'.d("? $boat:!; ? $bay; $shipclass $page=`1"
 			
 				,'bay'.d("a!")
-				.a("? $page; *@ .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass:ba.shipclass@)uri:query,ba.boats; ! Ship")
+				.a("? $page; *@ .ships=( `//api.boataround.com/v1/search? $bay:ba.slug@destinations $page `& $shipclass@)uri:query,ba.boats; ! Ship")
 				
 				,'more'.d('? $page')
 				.ui("$page=( (.ships.length `18)eq $page:++ :? )?!")
@@ -119,15 +104,15 @@ const state="$boat=. $bay=. $month:check=. $shipclass=. ";//(.month :date)?;
 */
 	
 )
-.a("($boat $bay $month $shipclass)uri:state")
-.e('HASHCHANGE', "log `hash!; & @boat :state; "+state)
+.a("($boat $bay $month)uri:state")
+.e('HASHCHANGE', "& @boat :state; "+state)
 
 .DICT({ html,
 	
 	db: "//orders.saxmute.one/weeker/gate.php?",
 	
-	shipclasses: options(html.shipclasses.textContent),
-	populardest: html.populardest.textContent.split("\n").map(str=>({title:str,value:str.split(", ")[0]})),
+	shipclasses: options(html.shipclasses.textContent.replace(/;/g,"&")),
+	populardest: html.populardest.textContent.split("\n").map( str => ({ title:str, value:str.split(", ")[0] }) ),
 	
 	Option
 	:'OPTION'.d("!! .title@ .value"),
@@ -135,9 +120,6 @@ const state="$boat=. $bay=. $month:check=. $shipclass=. ";//(.month :date)?;
 	Flag
 	:'IMG.flag'.d("!! (`chrome/flags/ .flag@ `.png)uri@src"),
 
-	Ships	
-	:'ships'.d("*@ .ships; ! Ship"),
-	
 	Ship
 	:'ARTICLE.offer'.d("$?=(.slug ..boat)eq; a!" //? .busy .busy=( .weeks $week )near; 
 	
@@ -226,47 +208,27 @@ const state="$boat=. $bay=. $month:check=. $shipclass=. ";//(.month :date)?;
 			dap.Env.Print(node,el);
 		},
 		
-		focus	:(value,alias,node)=>{
-				if(alias)
-					value&&scrollfocus(node,alias);
-				else{
-					const a=document.getElementById(value);
-					a&&a.scrollIntoView();
-				}
-			},
-		
-		geomap : (value,alias,node) => setTimeout( ()=> geomap(node,value), 10 ) // : ()=>{}
+		geomap : (value,alias,node) => setTimeout( ()=> geomap(node,value), 10 )
 	},
-	
+/*	
 	flatten:{
 		near	: values=>near(values.pop(),values.pop(),2)
 	},	
-	
-	convert:{ 	tsv, options, mw,
-			ba:boataround.convert,
+*/	
+	convert:{ 	mw,
+			ba	:boataround.convert,
 			saturdays:mw.weeks(6),
 			
 			date	: date => date&&date.toDateString(),
 			hum	: date => date&&date.toDateString().split(" ").slice(0,3).join(" "),
 			iso	: (pad => date => date&&[date.getFullYear(),pad(date.getMonth()+1),pad(date.getDate())].join("-"))(i=>i<10?"0"+i:i),
 			
-			share : data => navigator.share && navigator.share(data) && true,
-			
-			state	: (value,r) => {
-					const present = r && location.href.split("#!")[1];
-					
-					if(value==null)
-						return present && Object.fromEntries(new URLSearchParams(present));
-					
-					if(value!=present)
-						return history.pushState(null,null,"#!"+value)
-				}
-
 		}
 	
 })
 
-.FUNC({convert:mapping})
+.FUNC(pwa)
 .FUNC(wraps,modal)
+.FUNC({convert:mapping})
 
 .RENDER();

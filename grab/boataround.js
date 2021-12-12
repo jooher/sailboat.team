@@ -10,6 +10,19 @@ categories	= {
 	"power-catamaran"	:60
 },
 
+shipclasses = {
+	"11":	"category=sailing-yacht&cabins=1",
+	"12":	"category=sailing-yacht&cabins=2-3",
+	"13":	"category=sailing-yacht&cabins=3-5",
+	"15":	"category=sailing-yacht&cabins=5-",
+	"20":	"category=catamaran",
+	"30":	"category=motor-boat",
+	"40":	"category=motor-yacht",
+	"50":	"category=power-catamaran",
+	"60":	"category=gulet"
+	
+},
+
 specs	= p => ({
 	sleeps: Math.max(p.max_sleeps,p.max_people),
 	cabins: p.double_cabins+p.triple_cabins,
@@ -17,7 +30,7 @@ specs	= p => ({
 	hp: p.engine
 }),
 
-shipclass	= (category,sleeps) => categories[category] + sleeps>>1,
+//toShipclass	= (category,sleeps) => categories[category] + sleeps>>1,
 
 
 coords	= c => c.map( f => f.toFixed(3) ).reverse().join(":"),
@@ -50,7 +63,7 @@ boats = json => json.data[0].data && json.data[0].data
 		slug		:$.slug,
 		make		:$.parameters.year+" "+$.title.split(" | ")[0],
 		name		:$.title.split(" | ")[1],
-		shipclass	:shipclass($.category,$.max_sleeps||$.max_people),
+		//shipclass	:toShipclass($.category,$.max_sleeps||$.max_people),
 		
 		flag		:$.flag,
 		charter	:$.charter,
@@ -123,6 +136,8 @@ export default {
 		boats, slug, price, pic,
 		
 		pics: txt => txt.split("\n").map(pic),
+		
+		shipclass: i => shipclasses[i],
 		
 		weeks: dates=>{
 			const intervals = [];
